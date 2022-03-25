@@ -1,0 +1,2 @@
+# leetcode-js
+practice leetcode
