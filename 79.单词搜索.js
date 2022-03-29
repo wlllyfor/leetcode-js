@@ -12,8 +12,8 @@
  * ]
  * word = "SEE"
  * 
- * row 代表行的长度，为 4，clo 代表列的长度，为 3
- * i 代表横坐标，j 代表纵坐标
+ * 定义 row 代表行的长度，为 4，clo 代表列的长度，为 3
+ * 定义 i 代表横坐标，j 代表纵坐标
  * 递归函数为 find(i, j, curIndex) curIndex 代表查找过程中，word 当前的索引值
  * 二层循环查找，如果找到第一个元素，把那个位置的元素置为 null，表示找过了
  * board = [
@@ -53,17 +53,16 @@
  */
 
 function exist (board, word) {
-
-  if (board.length === 0 ) {
+  if (board.length === 0) {
     return false
   }
-
   if (word.length === 0) {
     return true
   }
 
   let row = board.length
   let col = board[0].length
+
   for (let i = 0; i < row; i++) {
     for (let j = 0; j < col; j++) {
       const res = find(i, j, 0)
@@ -74,31 +73,27 @@ function exist (board, word) {
   }
   return false
 
-  function find (i, j, curIndex) {
-    if (i >= row || i < 0 || j >= col || j < 0) {
+  function find(i, j, cur) {
+    if ( i < 0 || i >= row || j < 0 || j >= col) {
       return false
     }
-  
+
     let letter = board[i][j]
-  
-    if (letter !== word[curIndex]) {
+
+    if (letter !== word[cur]) {
       return false
     }
-  
-    if (curIndex === word.length - 1) {
+    if (word.length - 1 === cur) {
       return true
     }
-  
-    board[i][j] = null // 标记，已经找过的字母置为 null
-    const res = find(i + 1, j, curIndex + 1)
-             || find(i - 1, j, curIndex + 1)
-             || find(i, j + 1, curIndex + 1)
-             || find(i, j - 1, curIndex + 1)
+    board[i][j] = null
+    const res = find(i + 1, j, cur + 1)
+             || find(i - 1, j, cur + 1)
+             || find(i, j + 1, cur + 1)
+             || find(i, j - 1, cur + 1)
     board[i][j] = letter
-  
     return res
   }
-
 }
 
 // @lc code=end
