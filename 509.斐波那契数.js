@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=509 lang=javascript
  *
  * [509] 斐波那契数
+ * 
+ * 0 1 1 2
  */
 
 // @lc code=start
@@ -9,12 +11,18 @@
  * @param {number} n
  * @return {number}
  */
-const cache = [0, 1]
+
 var fib = function(n) {
-  for (let i = 2; i <= n; i++) {
-    cache[i] = cache[i - 1] + cache[i - 2]
+  if (n < 2) {
+    return n
   }
-  return cache[n]
+  let p = 0, q = 0, r = 1
+  for (let i = 2; i <= n; i++) {
+    p = q
+    q = r
+    r = p + q
+  }
+  return r
 };
 // @lc code=end
 
