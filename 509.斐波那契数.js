@@ -12,17 +12,18 @@
  * @return {number}
  */
 
-var fib = function(n) {
-  if (n < 2) {
+ function fib (n) {
+  if (n <= 1) {
     return n
   }
-  let p = 0, q = 0, r = 1
+  let p = 0, q = 1, r
   for (let i = 2; i <= n; i++) {
+    r = p + q
     p = q
     q = r
-    r = p + q
   }
   return r
-};
+}
+
 // @lc code=end
 
