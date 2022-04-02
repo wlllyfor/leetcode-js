@@ -6,17 +6,18 @@
  * 
  * 每次先兑换当前能兑换的最大零钱
  * 
- * [1, 2, 5] 11
- * 
+ * [1, 2, 5] 7
+ * [Infinity,Infinity,Infinity,Infinity,Infinity,Infinity,Infinity]
+ * [1, 1, 2, 2, 1, 2, 2]
  * f(0) = 0
  * f(1) = Math.min(f(1-1), f(1-2), f(1-5)) + 1 = 1
  * f(2) = Math.min(f(2-1), f(2-2), f(2-5)) + 1 = 1
  * f(3) = Math.min(f(3-1), f(3-2), f(3-5)) + 1 = 2
  * ...
- * f(11) = Math.min(f(11-1), f(11-2), f(11-5)) + 1
+ * f(7) = Math.min(f(7-1), f(7-2), f(7-5)) + 1
  * 
  * const dp = []
- * 
+ * if (i - coins[j] > 0)
  * dp[i] = Math.min(dp[i], dp[i-conins[j]] + 1)
  * 
  * [2] 3
