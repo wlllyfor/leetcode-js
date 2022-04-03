@@ -18,19 +18,16 @@
  * @return {number}
  */
 var removeDuplicates = function(nums) {
+  let slow = 0, fast = 0
   const len = nums.length
-  if (len < 2) {
-    return len
-  }
-  let i = 1, j = 1
-  while (j < len) {
-    if (nums[j] !== nums[j - 1]) {
-      nums[i] = nums[j]
-      i++
+  while (fast < len) {
+    if (nums[slow] !== nums[fast]) {
+      slow++
+      nums[slow] = nums[fast]
     }
-    j++
+    fast++
   }
-  return i
+  return slow + 1
 };
 // @lc code=end
 
