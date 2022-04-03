@@ -6,13 +6,11 @@
  *  i       j
  * [2,7,11,15]
  * 
- * 如果 target - nums[i] < nums[j] 
- * 说明 nums[j] 大了 j--
+ * sum = nums[i] + nums[j]
  * 
- * 如果 target - nums[i] > nums[j] 
- * 说明 nums[i] 小了 i++
- * 
- * 如果 target - nums[i] = nums[j] 返回 [i, j]
+ * sum > target j--
+ * sum < target i++
+ * sum === target return [i+1, j+1]
  * 
  */
 
@@ -23,17 +21,17 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-  let len = nums.length
-  let i = 0, j = len - 1
-  while (i < j) {
-    if (target - nums[i] < nums[j]) {
-      j--
+  let left = 0, right = nums.length - 1
+  while (left < right) {
+    let sum = nums[left] + nums[right]
+    if (sum < target) {
+      left++
     }
-    if (target - nums[i] > nums[j]) {
-      i++
+    if (sum  > target) {
+      right--
     }
-    if (target - nums[i] === nums[j]) {
-      return [i + 1, j + 1]
+    if (sum === target) {
+      return [left + 1, right + 1]
     }
   }
 };
