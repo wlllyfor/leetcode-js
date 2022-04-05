@@ -27,12 +27,7 @@ function getLength (head) {
   return len
 }
 /**
- * 1 2 3 4 5 n = 2
- *   
- * s 5 4 3 2 1 
- * [1,2]
- * 
- * s 2 1    n = 1
+ *
  */
 var removeNthFromEnd = function(head, n) {
   let len = getLength(head)
@@ -50,5 +45,31 @@ var removeNthFromEnd = function(head, n) {
   }
   return zero.next
 };
+
+/**
+ * i j
+ * zero 1 2 3 4 5   n = 2
+ *  
+ * 快慢指针，快指针先移动到 n 的位置
+ * 
+ * 然后快慢指针一起移动，当快指针移动到链表末尾时，慢指针的位置就是 n 的位置
+ * 
+ */
+function removeNthFromEnd(head, n) {
+  let zero = {
+    next: head
+  }
+  let slow = fast = zero
+  while (n) {
+    fast = fast.next
+    n--
+  }
+  while (fast) {
+    slow = slow.next
+    fast = fast.next
+  }
+  slow.next = slow.next.next
+  return zero.next
+}
 // @lc code=end
 
