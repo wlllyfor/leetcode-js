@@ -16,20 +16,22 @@
  * @param {ListNode} head
  * @param {number} val
  * @return {ListNode}
+ * 
+ * [7,7,7,7]
  */
 var removeElements = function(head, val) {
-  let first = {
+  let zero = {
     next: head
   }
-  let cur = first
-  while(cur && cur.next) {
-    if (cur.next.val === val) {
-      cur.next = cur.next.next
+  let tmp = zero
+  while(tmp && tmp.next) {
+    if (tmp.next.val === val) {
+      tmp.next = tmp.next.next
     } else {
-      cur = cur.next
+      tmp = tmp.next
     }
   }
-  return first.next
+  return zero.next
 };
 // @lc code=end
 

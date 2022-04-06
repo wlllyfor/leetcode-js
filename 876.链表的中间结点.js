@@ -43,5 +43,6 @@ var middleNode = function(head) {
   }
   return zero
 };
+
 // @lc code=end
 
