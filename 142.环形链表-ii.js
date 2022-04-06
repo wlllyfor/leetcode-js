@@ -38,18 +38,18 @@
  * [3,2,0,-4]
  * 1
  */
-function detectCycle (head) {
-  let cache = new Set()
-  let tmp = head
-  while(tmp) {
-    if (cache.has(tmp)) {
-      return tmp
-    }
-    cache.add(tmp)
-    tmp = tmp.next
-  }
-  return null
-}
+// function detectCycle (head) {
+//   let cache = new Set()
+//   let tmp = head
+//   while(tmp) {
+//     if (cache.has(tmp)) {
+//       return tmp
+//     }
+//     cache.add(tmp)
+//     tmp = tmp.next
+//   }
+//   return null
+// }
 
 // @lc code=end
 
