@@ -21,18 +21,35 @@
  * 
  * -1
  */
-var detectCycle = function(head) {
-  let arr = []
+// var detectCycle = function(head) {
+//   let arr = []
+//   let tmp = head
+//   while (tmp) {
+//     if (arr.includes(tmp)) {
+//       return tmp
+//     }
+//     arr.push(tmp)
+//     tmp = tmp.next
+//   }
+//   return null
+// };
+
+/**
+ * [3,2,0,-4]
+ * 1
+ */
+function detectCycle (head) {
+  let cache = new Set()
   let tmp = head
-  while (tmp) {
-    if (arr.includes(tmp)) {
+  while(tmp) {
+    if (cache.has(tmp)) {
       return tmp
     }
-    arr.push(tmp)
+    cache.add(tmp)
     tmp = tmp.next
   }
   return null
-};
+}
 
 // @lc code=end
 
