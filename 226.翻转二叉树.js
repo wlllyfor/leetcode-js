@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=104 lang=javascript
+ * @lc app=leetcode.cn id=226 lang=javascript
  *
- * [104] 二叉树的最大深度
+ * [226] 翻转二叉树
  */
 
 // @lc code=start
@@ -15,19 +15,18 @@
  */
 /**
  * @param {TreeNode} root
- * @return {number}
- *   1
- *  2 3
- * 4 5
- * [1,2,3,4,5]
+ * @return {TreeNode}
  */
-var maxDepth = function(root) {
+var invertTree = function(root) {
   if (!root) {
-    return 0
+    return null
   }
-  let l = maxDepth(root.left)
-  let r = maxDepth(root.right)
-  return Math.max(l, r) + 1
+  const left = invertTree(root.left) 
+  const right = invertTree(root.right)
+  root.left = right
+  root.right = left
+
+  return root
 };
 // @lc code=end
 
