@@ -58,9 +58,6 @@ function isPalindrome(head) {
     slow = next
   }
 
-  console.log(pre)
-  console.log(slow)
-
   if (fast) {
     slow = slow.next
   }
