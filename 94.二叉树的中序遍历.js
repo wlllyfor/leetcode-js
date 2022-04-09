@@ -34,13 +34,13 @@
 
 /**
  *        1
- *      2    3
- *    4  5  6  7
+ *      2    3  
+ *    4  5  6  7    
  * 
  * 4251637
  * 
- * stack：[1,2,4]
- * res：[4,2,]
+ * stack：[1]
+ * res：[]
  * 左中右
  */
 function inorderTraversal(root) {
@@ -50,7 +50,7 @@ function inorderTraversal(root) {
   }
   let stack = []
   while (root || stack.length) {
-    while(root) {
+    while (root) {
       stack.push(root)
       root = root.left
     }

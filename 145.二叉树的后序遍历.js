@@ -16,19 +16,29 @@
 /**
  * @param {TreeNode} root
  * @return {number[]}
+ * 
+ *         1
+ *      2    3  
+ *    4  5  6  7    
+ * 
+ * 4526731
+ * 
+ * stack：[124]
+ * res：[]
+ * 左右中
  */
-var postorderTraversal = function(root) {
-  const res = []
-  function fn(root) {
+function postorderTraversal(root) {
+  let res = []
+  function walk(root) {
     if (!root) {
-      return
+      return res
     }
-    fn(root.left)
-    fn(root.right)
+    walk(root.left)
+    walk(root.right)
     res.push(root.val)
   }
-  fn(root)
+  walk(root)
   return res
-};
+}
 // @lc code=end
 

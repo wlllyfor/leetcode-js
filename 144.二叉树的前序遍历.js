@@ -16,18 +16,55 @@
 /**
  * @param {TreeNode} root
  * @return {number[]}
+ * 
+ *          1
+ *       2    3
+ *     4  5  6
+ * 
+ * 
+ * 124536
+ * 中左右
  */
- function preorderTraversal (root) {
+// var preorderTraversal = function(root) {
+//   let res = []
+//   function walk(root) {
+//     if (!root) {
+//       return res
+//     }
+//     res.push(root.val)
+//     walk(root.left)
+//     walk(root.right)
+//   }
+//   walk(root)
+//   return res
+// };
+
+/**
+ *          1
+ *       2    3
+ *     4  5  6
+ * 
+ * root 4
+ * stack [1,2, 4]
+ * res [1,2,4]
+ * 124536
+ * 中左右
+ */
+function preorderTraversal(root) {
   let res = []
   if (!root) {
     return res
   }
-  let stack = [root]
-  while(stack.length) {
-    const cur = stack.pop()
-    res.push(cur.val)
-    cur.right && stack.push(cur.right)
-    cur.left && stack.push(cur.left)
+  let stack = []
+
+  while (root || stack.length) {
+    while(root) {
+      res.push(root.val)
+      stack.push(root)
+      root = root.left
+    }
+    root = stack.pop()
+    root = root.right
   }
   return res
 }
