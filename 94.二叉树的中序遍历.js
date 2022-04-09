@@ -16,19 +16,49 @@
 /**
  * @param {TreeNode} root
  * @return {number[]}
+ * 左中右
  */
-var inorderTraversal = function(root) {
-  const res = []
-  function dfs (root) {
-    if (!root) {
-      return 
-    }
-    dfs(root.left)
-    res.push(root.val)
-    dfs(root.right)
+// var inorderTraversal = function(root) {
+//   let res = []
+//   function walk(root) {
+//     if(!root) {
+//       return res
+//     }
+//     walk(root.left)
+//     res.push(root.val)
+//     walk(root.right)
+//   }
+//   walk(root)
+//   return res
+// };
+
+/**
+ *        1
+ *      2    3
+ *    4  5  6  7
+ * 
+ * 4251637
+ * 
+ * stack：[1,2,4]
+ * res：[4,2,]
+ * 左中右
+ */
+function inorderTraversal(root) {
+  let res = []
+  if (!root) {
+    return res
   }
-  dfs(root)
+  let stack = []
+  while (root || stack.length) {
+    while(root) {
+      stack.push(root)
+      root = root.left
+    }
+    root = stack.pop()
+    res.push(root.val)
+    root = root.right
+  }
   return res
-};
+}
 // @lc code=end
 
