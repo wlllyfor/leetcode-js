@@ -16,21 +16,30 @@
 /**
  * @param {TreeNode} root
  * @return {boolean}
+ * 
+ * [1,2,2,3,4,4,3]
+ * 
+ *             1
+ *          2      2
+ *       3    4  4   3
  */
 var isSymmetric = function(root) {
- function isMirror(l, r) {
-  if (!l && !r) {
-    return true
-  }
-  if (!l || !r) {
+  if (!root) {
     return false
   }
-  if (l.val !== r.val) {
-    return false
+  function check(l, r) {
+    if (!l && !r) {
+      return true
+    }
+    if (!l || !r) {
+      return false
+    }
+    if (l.val !== r.val) {
+      return false
+    }
+    return check(l.left, r.right) && check(l.right, r.left)
   }
-  return isMirror(l.left, r.right) && isMirror(l.right, r.left) 
- }
- return isMirror(root, root)
+  return check(root.left, root.right)
 };
 // @lc code=end
 
