@@ -19,13 +19,12 @@
  */
 var invertTree = function(root) {
   if (!root) {
-    return null
+    return root
   }
-  const left = invertTree(root.left) 
-  const right = invertTree(root.right)
-  root.left = right
-  root.right = left
-
+  const l = root.left
+  const r = root.right
+  root.left = invertTree(r)
+  root.right = invertTree(l)
   return root
 };
 // @lc code=end
