@@ -16,18 +16,12 @@
 /**
  * @param {TreeNode} root
  * @return {number}
- *   1
- *  2 3
- * 4 5
- * [1,2,3,4,5]
  */
 var maxDepth = function(root) {
   if (!root) {
     return 0
   }
-  let l = maxDepth(root.left)
-  let r = maxDepth(root.right)
-  return Math.max(l, r) + 1
+  return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
 };
 // @lc code=end
 
