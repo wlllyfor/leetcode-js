@@ -14,11 +14,48 @@
  * }
  */
 /**
- * @param {TreeNode} root
+ * @param {TreeNode} node
  * @return {void} Do not return anything, modify root in-place instead.
+ * 
+ * 中左右
+ * 
  */
-var flatten = function(root) {
+// var flatten = function(root) {
+//   let list = []
+//   if (root) {
+//     let stack = [root]
+//     while(stack.length) {
+//       const node = stack.pop()
+//       list.push(node)
+//       node.right && stack.push(node.right)
+//       node.left && stack.push(node.left)
+//     }
+//   }
+  
+//   for (let i = 1; i < list.length; i++) {
+//     const prev = list[i - 1]
+//     const cur = list[i]
+//     prev.left = null
+//     prev.right = cur
+//   }
+// };
 
-};
+function flatten (root) {
+  let list = []
+  function travel(root) {
+    if (root) {
+      list.push(root)
+      travel(root.left)
+      travel(root.right)
+    }
+  }
+  travel(root)
+  for (let i = 1; i < list.length; i++) {
+    const prev = list[i - 1]
+    const cur = list[i]
+    prev.left = null
+    prev.right = cur
+  }
+}
 // @lc code=end
 
