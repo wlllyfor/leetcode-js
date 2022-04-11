@@ -18,33 +18,47 @@
  * @param {TreeNode} subRoot
  * @return {boolean}
  */
-var isSubtree = function(root, subRoot) {
-  function isSameTree (p, q) {
-    if(!p && !q) {
+function isSameTree (p, q) {
+  if(!p && !q) {
+    return true
+  }
+  if(!p || !q) {
+    return false
+  }
+  if (p.val !== q.val) {
+    return false
+  }
+  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+}
+// var isSubtree = function(root, subRoot) {
+//   let res = false
+//   function travel(root) {
+//     if (!root) {
+//       return
+//     }
+//     if (root.val === subRoot.val) {
+//       if (isSameTree(root, subRoot)) {
+//         res = true
+//         return 
+//       }
+//     }
+    
+//     travel(root.left)
+//     travel(root.right)
+//   }
+//   travel(root)
+//   return res
+// };
+function isSubtree (root, subRoot) {
+  if (!root) {
+    return false
+  }
+  if (root.val === subRoot.val) {
+    if (isSameTree(root, subRoot)) {
       return true
     }
-    if(!p || !q) {
-      return false
-    }
-    if (p.val !== q.val) {
-      return false
-    }
-    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
   }
-  let res = false
-  function travel(root) {
-    if (!root) {
-      return
-    }
-    if (isSameTree(root, subRoot)) {
-      res = true
-      return 
-    }
-    travel(root.left)
-    travel(root.right)
-  }
-  travel(root)
-  return res
-};
+  return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot)
+}
 // @lc code=end
 
