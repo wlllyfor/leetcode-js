@@ -16,27 +16,28 @@
 /**
  * @param {TreeNode} root
  * @return {number[][]}
+ * 3 9 20 15 7
+ * [3]
+ * [9,20]
+ * [15,7]
  */
 var levelOrder = function(root) {
-  const res = []
+  let res = []
   if (!root) {
     return res
   }
-  let q = []
-  q.push(root)
-  while(q.length) {
-    const curLen = q.length
-    res.push([])
-    for (let i = 0; i < curLen; i++) {
-      const node = q.shift()
-      res[res.length - 1].push(node.val)
-      if (node.left) {
-        q.push(node.left)
-      }
-      if (node.right) {
-        q.push(node.right)
-      }
+  let queue = [root]
+
+  while(queue.length) {
+    let len = queue.length
+    let curLevel = []
+    while(len--) {
+      const node = queue.shift()
+      curLevel.push(node.val)
+      node.left && queue.push(node.left)
+      node.right && queue.push(node.right)
     }
+    res.push(curLevel)
   }
   return res
 };
