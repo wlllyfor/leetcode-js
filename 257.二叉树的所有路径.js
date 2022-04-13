@@ -21,23 +21,41 @@
  *         1
  *       2   3
  *     5  6
+ * 
+ * 把 path 当成 travel 的参数传递是关键
  */
-var binaryTreePaths = function(root) {
+// var binaryTreePaths = function(root) {
+//   let res = []
+//   function travel(root, path) {
+//     if (!root) {
+//       return 
+//     }
+//     if (!root.left && !root.right) {
+//       path += root.val
+//       res.push(path)
+//     }
+//     travel(root.left, path + root.val + '->')
+//     travel(root.right, path + root.val + '->')
+//   }
+//   travel(root, '')
+//   return res
+// };
+function binaryTreePaths (root) {
   let res = []
-  function travel(root, str) {
-    if (root) {
-      str += root.val.toString()
-      if (!root.left && !root.right) {
-        res.push(str)
-      } else {
-        str += '->'
-        travel(root.left, str)
-        travel(root.right, str)
-      }
-    } 
+  function travel(root, paths) {
+    if (!root) {
+      return 
+    }
+    if (!root.left && !root.right) {
+      paths.push(root.val)
+      res.push(paths.join('->'))
+    }
+    travel(root.left, paths.concat(root.val))
+    travel(root.right, paths.concat(root.val))
+
   }
-  travel(root, '')
+  travel(root, [])
   return res
-};
+}
 // @lc code=end
 
