@@ -31,7 +31,15 @@
 //   return count
 // };
 function countNodes (root) {
-  
+  function travel(root) {
+    if (!root) {
+      return 0
+    }
+    let left = travel(root.left)
+    let right = travel(root.right)
+    return left + right + 1
+  }
+  return travel(root)
 }
 // @lc code=end
 
