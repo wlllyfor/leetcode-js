@@ -27,9 +27,9 @@ var levelOrder = function(root) {
     let len = queue.length
     let curLevel = []
     while(len--) {
-      let node = queue.shift()
+      const node = queue.shift()
       curLevel.push(node.val)
-      for (let child of node.children) {
+      for(let child of node.children) {
         queue.push(child)
       }
     }
