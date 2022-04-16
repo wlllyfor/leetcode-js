@@ -19,28 +19,47 @@
  * @param {Node} root
  * @return {Node}
  */
-var connect = function(root) {
+// var connect = function(root) {
+//   if (!root) {
+//     return root
+//   }
+//   let queue = [root]
+//   while(queue.length) {
+//     let len = queue.length
+//     let curLevel = []
+//     while(len--) {
+//       const node = queue.shift()
+//       curLevel.push(node)
+//       node.left && queue.push(node.left)
+//       node.right && queue.push(node.right)
+//     }
+//     for(let i = 0; i < curLevel.length; i++) {
+//       curLevel[i].next = curLevel[i + 1]
+//       if (i === curLevel.length - 1) {
+//         curLevel[i].next = null
+//       }
+//     }
+//   }
+//   return root
+// };
+
+function connect (root) {
   if (!root) {
     return root
   }
   let queue = [root]
-  while(queue.length) {
+  while (queue.length) {
     let len = queue.length
-    let curLevel = []
     while(len--) {
       const node = queue.shift()
-      curLevel.push(node)
+      if (len > 0) {
+        node.next = queue[0]
+      }
       node.left && queue.push(node.left)
       node.right && queue.push(node.right)
     }
-    for(let i = 0; i < curLevel.length; i++) {
-      curLevel[i].next = curLevel[i + 1]
-      if (i === curLevel.length - 1) {
-        curLevel[i].next = null
-      }
-    }
   }
   return root
-};
+}
 // @lc code=end
 
