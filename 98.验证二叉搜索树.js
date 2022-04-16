@@ -29,17 +29,39 @@
  *     2
  *   1   3
  */
-var isValidBST = function(root) {
-  function travel(root, min, max) {
+// var isValidBST = function(root) {
+//   function travel(root, min, max) {
+//     if (!root) {
+//       return true
+//     }
+//     if (root.val <= min || root.val >= max) {
+//       return false
+//     }
+//     return travel(root.left, min, root.val) && travel(root.right, root.val, max)
+//   }
+//   return travel(root, -Infinity, Infinity)
+// };
+
+/**
+ * 中序遍历为升序
+ */
+function isValidBST(root) {
+  let tmp = -Infinity
+  let res = true
+  function travel(root) {
     if (!root) {
-      return true
+      return
     }
-    if (root.val <= min || root.val >= max) {
-      return false
+    travel(root.left)
+    if (tmp >= root.val) {
+      res = false
+      return
     }
-    return travel(root.left, min, root.val) && travel(root.right, root.val, max)
+    tmp = root.val
+    travel(root.right)
   }
-  return travel(root, -Infinity, Infinity)
-};
+  travel(root)
+  return res
+}
 // @lc code=end
 
