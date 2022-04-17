@@ -45,23 +45,40 @@
 /**
  * 中序遍历为升序
  */
+// function isValidBST(root) {
+//   let tmp = -Infinity
+//   let res = true
+//   function travel(root) {
+//     if (!root) {
+//       return
+//     }
+//     travel(root.left)
+//     if (tmp >= root.val) {
+//       res = false
+//       return
+//     }
+//     tmp = root.val
+//     travel(root.right)
+//   }
+//   travel(root)
+//   return res
+// }
+
 function isValidBST(root) {
   let tmp = -Infinity
-  let res = true
   function travel(root) {
     if (!root) {
-      return
+      return true
     }
-    travel(root.left)
+    let left = travel(root.left)
     if (tmp >= root.val) {
-      res = false
-      return
+      return false
     }
     tmp = root.val
-    travel(root.right)
+    let right = travel(root.right)
+    return left && right
   }
-  travel(root)
-  return res
+  return travel(root)
 }
 // @lc code=end
 
