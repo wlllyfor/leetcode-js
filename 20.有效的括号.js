@@ -18,14 +18,12 @@ function isValid (s) {
     '[': ']',
     '{': '}'
   }
-  let arr = s.split('')
   let stack = []
-  while(arr.length) {
-    let item = arr.shift()
-    if (obj[stack[stack.length - 1]] === item) {
+  for (let char of s) {
+    if (char === obj[stack[stack.length - 1]]) {
       stack.pop()
     } else {
-      stack.push(item)
+      stack.push(char)
     }
   }
   return stack.length === 0
