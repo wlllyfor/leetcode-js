@@ -12,7 +12,7 @@
  * s ')'
  * stack [(]
  */
-var isValid = function(s) {
+function isValid (s) {
   const obj = {
     '(': ')',
     '[': ']',
