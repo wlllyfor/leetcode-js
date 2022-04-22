@@ -13,15 +13,32 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(nums, target) {
-  const map = {}
-  for (let i in nums) {
-    if (target - nums[i] in map) {
-      return [map[target - nums[i]], i]
+// function twoSum(nums, target) {
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = 0; j < nums.length; j++) {
+//       if (nums[i] + nums[j] === target && i !== j) {
+//         return [i, j]
+//       }      
+//     }
+//   }
+// };
+
+/**
+ * 
+ * {
+ *   2: 0,
+ *   7: 1
+ * }
+ */
+function twoSum(nums, target) {
+  const obj = {}
+  for (let i = 0; i < nums.length; i++) {
+    if (target - nums[i] in obj) {
+      return [obj[target - nums[i]], i]
     } else {
-      map[nums[i]] = i
+      obj[nums[i]] = i
     }
   }
-};
+}
 // @lc code=end
 
