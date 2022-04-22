@@ -25,19 +25,19 @@
  * 124536
  * 中左右
  */
-// var preorderTraversal = function(root) {
-//   let res = []
-//   function walk(root) {
-//     if (!root) {
-//       return res
-//     }
-//     res.push(root.val)
-//     walk(root.left)
-//     walk(root.right)
-//   }
-//   walk(root)
-//   return res
-// };
+function preorderTraversal (root) {
+  let res = []
+  function dfs(root) {
+    if (!root) {
+      return res
+    }
+    res.push(root.val)
+    dfs(root.left)
+    dfs(root.right)
+  }
+  dfs(root)
+  return res
+}
 
 /**
  *          1
