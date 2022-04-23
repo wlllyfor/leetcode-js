@@ -49,33 +49,33 @@
  * @return {number[][]}
  */
 
-//  function permute(nums) {
-//   let res = []
-//   let path = []
-//   let used = {}
+ function permute(nums) {
+  let res = []
+  let path = []
+  let used = {}
 
-//   backTrack(nums)
+  backTrack()
 
-//   function backTrack () {
-//     if (path.length === nums.length) {
-//       return res.push([...path])
-//     }
+  function backTrack () {
+    if (path.length === nums.length) {
+      return res.push([...path])
+    }
 
-//     for (let num of nums) {
-//       if (used[num]) {
-//         continue
-//       }
+    for (let num of nums) {
+      if (used[num]) {
+        continue
+      }
 
-//       path.push(num)
-//       used[num] = true
-//       backTrack()
-//       path.pop()
-//       used[num] = false
-//     }
+      path.push(num)
+      used[num] = true
+      backTrack()
+      path.pop()
+      used[num] = false
+    }
 
-//   }
-//   return res
-// }
+  }
+  return res
+}
 
 
 // function permute (nums) {
@@ -101,28 +101,29 @@
 //   return res
 // }
 
-function permute(nums) {
-  let res = [], path = []
+// function permute(nums) {
+//   let res = [], path = []
 
-  backTrack(nums)
+//   backTrack()
 
-  function backTrack () {
-    if (path.length === nums.length) {
-      return res.push([...path])
-    }
+//   return res
 
-    for (let num of nums) {
-      if (path.includes(num)) {
-        continue
-      }
+//   function backTrack () {
+//     if (path.length === nums.length) {
+//       return res.push([...path])
+//     }
 
-      path.push(num)
-      backTrack()
-      path.pop()
-    }
+//     for (let num of nums) {
+//       if (path.includes(num)) {
+//         continue
+//       }
 
-  }
-  return res
-}
+//       path.push(num)
+//       backTrack()
+//       path.pop()
+//     }
+
+//   }
+// }
 // @lc code=end
 
