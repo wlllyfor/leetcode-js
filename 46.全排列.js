@@ -7,8 +7,6 @@
 /**
  * 输入 nums = [1,2,3]
  * 输出 [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
- * 定义一个 res，代表输出结果
- * 定义一个临时数组 temp，用来暂存存值的过程
  * [1]
  * [1,2]
  * [1,2,3]
@@ -18,6 +16,8 @@
  * [2,1]
  * [2,1,3]
  * 
+ * 后悔药
+ * 
  * 
  * 递归实现，终止条件 nums.length === path.length
  * 遇到一条路走到底的就回退
@@ -26,25 +26,18 @@
  * 需要返回全部路径的类型
  * 
  * 
- * function fn (arr) {
- *   let res = []
- *   backTrack(res, path, arr)
- * 
- *   function backTrack (res, path, arr) {
- * 
- *    递归终止条件
- *     return res.push([...path])
- *  
- *    for (let i = 0; i < arr.length; i++) {
- *     
- *      选择一个值，添加进路径
- *      backTrack(res, path, arr)
- *      回退，撤回选择的数据
- * 
- *    }
+ *   function backTrack (缓存路径，数据) {
+ *     if (递归终止条件) {
+ *       存放结果
+ *       return
+ *     }
+ *     for (循环数据) {
+ *       选择一个值，添加进缓存路径
+ *       backTrack(缓存路径，数据)
+ *       回退，撤回选择的数据
+ *     }
  *   }
- *   return res
- * }
+ * 
  * 
  * 
  * 
@@ -56,23 +49,75 @@
  * @return {number[][]}
  */
 
+//  function permute(nums) {
+//   let res = []
+//   let path = []
+//   let used = {}
+
+//   backTrack(nums)
+
+//   function backTrack () {
+//     if (path.length === nums.length) {
+//       return res.push([...path])
+//     }
+
+//     for (let num of nums) {
+//       if (used[num]) {
+//         continue
+//       }
+
+//       path.push(num)
+//       used[num] = true
+//       backTrack()
+//       path.pop()
+//       used[num] = false
+//     }
+
+//   }
+//   return res
+// }
+
+
+// function permute (nums) {
+//   let path = []
+//   let res = []
+//   return backTrack(res, path, nums)
+
+// }
+// function backTrack(res, path, nums) {
+//   if (path.length === nums.length) {
+//     res.push([...path])
+//     return 
+//   }
+
+//   for (let num of nums) {
+//     if (path.includes(num)) {
+//       continue
+//     }
+//     path.push(num)
+//     backTrack(res, path, nums)
+//     path.pop()
+//   }
+//   return res
+// }
+
 function permute(nums) {
   let res = [], path = []
 
   backTrack(nums)
 
-  function backTrack (nums) {
+  function backTrack () {
     if (path.length === nums.length) {
       return res.push([...path])
     }
 
-    for (let i = 0; i < nums.length; i++) {
-      if (path.includes(nums[i])) {
+    for (let num of nums) {
+      if (path.includes(num)) {
         continue
       }
 
-      path.push(nums[i])
-      backTrack(nums)
+      path.push(num)
+      backTrack()
       path.pop()
     }
 
