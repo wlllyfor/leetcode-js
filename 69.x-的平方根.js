@@ -22,7 +22,21 @@ var mySqrt = function(x) {
       left = mid + 1
     }
   }
-  return left - 1
+  return right
 };
+
+// function mySqrt(x) {
+//   let left = 0
+//   let right = x
+//   while (left <= right) {
+//     let mid = (left + right) >> 1
+//     if (mid * mid > x) {
+//       right = mid - 1
+//     } else {
+//       left = mid + 1
+//     }
+//   }
+//   return left - 1
+// }
 // @lc code=end
 
