@@ -15,16 +15,7 @@ var letterCombinations = function(digits) {
     return []
   }
 
-  const map = {
-    '2': 'abc',
-    '3': 'def',
-    '4': 'ghi',
-    '5': 'jkl',
-    '6': 'mno',
-    '7': 'pqrs',
-    '8': 'tuv',
-    '9': 'wxyz',
-  }
+  const arr = ['', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz'] 
   
   let res = []
 
@@ -36,7 +27,7 @@ var letterCombinations = function(digits) {
       return
     }
 
-    const letters = map[digits[i]]
+    const letters = arr[digits[i]]
 
     for (let char of letters) {
       dfs(curStr + char, i + 1)
@@ -44,6 +35,32 @@ var letterCombinations = function(digits) {
   }
   return res
 };
+
+// function letterCombinations (digits) {
+//   let len = digits.length
+//   if (!len) {
+//     return []
+//   }
+//   let res = []
+//   const arr = ['', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz'] 
+//   let path = []
+//   backTrack(0)
+//   return res
+//   function backTrack (i) {
+//     if (path.length === len) {
+//       res.push(path.join(''))
+//       return
+//     }
+
+//     let letters = arr[digits[i]]
+
+//     for (let char of letters) {
+//       path.push(char)
+//       backTrack(i + 1)
+//       path.pop()
+//     }
+//   }
+// }
 
 // @lc code=end
 
