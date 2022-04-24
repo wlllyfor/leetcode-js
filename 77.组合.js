@@ -10,8 +10,34 @@
  * @param {number} k
  * @return {number[][]}
  */
-var combine = function(n, k) {
 
+/**
+ * 
+ * n - (k - len) + 1
+ */
+// function combine(n, k) {
+//   let path = []
+//   let res = []
+
+//   backTrack(1)
+
+//   return res
+
+//   function backTrack(cur) {
+//     let len = path.length
+//     if (len === k) {
+//       res.push([...path])
+//       return
+//     }
+//     for (let i = cur; i <= n; i++) {
+//       path.push(i)
+//       backTrack(i + 1)
+//       path.pop()
+//     }
+//   }
+// }
+
+function combine(n, k) {
   let path = []
   let res = []
 
@@ -19,20 +45,18 @@ var combine = function(n, k) {
 
   return res
 
-  function backTrack(count) {
-    if (count > k ) {
+  function backTrack(cur) {
+    let len = path.length
+    if (len === k) {
       res.push([...path])
       return
     }
-    for (let i = count; i <= n; i++) {
-      if (path.includes(i) || i < Math.max(...path)) {
-        continue
-      }
+    for (let i = cur; i <= n - k + len + 1; i++) {
       path.push(i)
-      backTrack(count + 1)
+      backTrack(i + 1)
       path.pop()
     }
   }
-};
+}
 // @lc code=end
 
