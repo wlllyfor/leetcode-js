@@ -3,10 +3,9 @@
  *
  * [283] 移动零
  * 
- *      i
- *        j
- * [1,2,0,1,0,3,12]
- * [2,1,0,1]
+ *             i    
+ * [1,2,1,3,12,3,12]
+ *               j
  * 
  */
 
@@ -15,7 +14,9 @@
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-// var moveZeroes = function(nums) {
+
+
+// function moveZeroes (nums) {
 //   let i = 0
 //   for (let j = 0; j < nums.length; j++) {
 //     if (nums[j] !== 0) {
@@ -37,31 +38,85 @@
  * 
  */
 
-function moveZeroes(nums) {
-  let slow = 0, fast = 0
-  while(fast < nums.length) {
-    if (nums[fast] !== 0) {
-      [nums[fast],nums[slow]] = [nums[slow],nums[fast]]
-      slow++
-    }
-    fast++
-  }
-  return nums
-}
 
+/**
+ * 
+ * 初始化：
+ *  i    
+ * [1,0,1,0,3,12]
+ *  j
+ * 
+ * 下一步：
+ * 
+ *    i    
+ * [1,0,1,0,3,12]
+ *    j
+ * 
+ * 下一步：
+ * 
+ *    i    
+ * [1,0,1,0,3,12]
+ *      j
+ * 
+ * 下一步：
+ * 
+ *      i    
+ * [1,1,0,0,3,12]
+ *        j
+ * 
+ * 下一步：
+ * 
+ *      i     
+ * [1,1,0,0,3,12]
+ *          j
+ * 
+ * 下一步：
+ * 
+ *        i     
+ * [1,1,3,0,0,12]
+ *             j
+ * 
+ *  下一步：
+ * 
+ *           i     
+ * [1,1,3,12,0,0]
+ *               j
+ * 
+ */
+
+/**
+ *      i
+ * [1,0,1,0,3,12]
+ *        j
+ */
 // function moveZeroes(nums) {
 //   let slow = 0, fast = 0
 //   while(fast < nums.length) {
-//     if (nums[fast] !== 0 && nums[slow] === 0) {
+//     if (nums[fast] !== 0) {
 //       [nums[fast],nums[slow]] = [nums[slow],nums[fast]]
-//       slow++
-//     }
-//     if (nums[slow] !== 0) {
 //       slow++
 //     }
 //     fast++
 //   }
 //   return nums
 // }
+
+function moveZeroes(nums) {
+  let slow = 0, fast = 0
+  while(fast < nums.length) {
+
+    if (nums[fast] !== 0 && nums[slow] === 0) {
+      [nums[fast],nums[slow]] = [nums[slow],nums[fast]]
+      slow++
+    }
+
+    if (nums[slow] !== 0) {
+      slow++
+    }
+
+    fast++
+  }
+  return nums
+}
 // @lc code=end
 

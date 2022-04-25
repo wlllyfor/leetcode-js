@@ -6,7 +6,7 @@
  * 
  *  i
  *  j
- * [2,3,1,2,4,3]
+ * 2,3,1,4,3]
  * 
  */
 
@@ -46,30 +46,125 @@
 // };
 
 /**
+ * 慢指针 i，快指针 j
+ * target = 7  
+ * 初始状态：
+ * sum = 2  res = Infinity
  * 
- *            i
- *            j
- * [2,3,1,2,4,3]
+ *  i          
+ * [2,3,1,4,3]
+ *  j
  * 
- *  i
+ * 
+ * 下一步：
+ * sum = 5  res = Infinity
+ * 
+ *  i          
+ * [2,3,1,4,3]
+ *    j
+ * 
+ * 
+ * 下一步：
+ * sum = 6  res = Infinity
+ * 
+ *  i          
+ * [2,3,1,4,3]
+ *      j
+ * 
+ * 
+ * 下一步：
+ * sum = 10  res = 4
+ * 
+ *  i          
+ * [2,3,1,4,3]
+ *        j
+ * 
+ * 下一步：
+ * sum = 8  res = 3
+ * 
+ *    i          
+ * [2,3,1,4,3]
+ *        j
+ * 
+ * 
+ * 下一步：
+ * sum = 5  res = 3
+ * 
+ *      i          
+ * [2,3,1,4,3]
+ *        j
+ * 
+ * 
+ * 下一步：
+ * sum = 8  res = 3
+ * 
+ *      i          
+ * [2,3,1,4,3]
  *          j
- * [1,2,3,4,5] 15
+ * 
+ * 
+ * 下一步：
+ * sum = 7  res = 2
+ * 
+ *        i          
+ * [2,3,1,4,3]
+ *          j
+ * 
+ * 
+ * 下一步：
+ * sum = 3  res = 2
+ * 
+ *          i          
+ * [2,3,1,4,3]
+ *          j
+ *
+ * 
+ * 下一步：
+ * 快指针走完，循环结束
+ * 
+ *          i          
+ * [2,3,1,4,3]
+ *            j
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ *  
  */
+// function minSubArrayLen (target, nums) {
+//   let slow = 0, fast = 0
+//   let len = nums.length
+//   let res = Infinity
+//   let sum = 0
+//   while(fast < len) {
+//     sum += nums[fast]
+//     while (sum >= target) {
+//       res = Math.min(fast - slow + 1, res)
+//       sum -= nums[slow]
+//       slow++
+//     }
+//     fast++
+//   }
+//   return res === Infinity ? 0 : res
+// }
+
 function minSubArrayLen (target, nums) {
-  let slow = 0, fast = 0
   let len = nums.length
-  let min = len + 1
-  let sum = 0
-  while (fast < len) {
-    sum += nums[fast]
-    while (sum >= target) {
-      min = Math.min(min, fast - slow + 1)
-      sum -= nums[slow]
-      slow++
-    }
-    fast++
+  let res = Infinity
+  for (let i = 0; i < len; i++) {
+      let sum = 0
+      for (let j = i; j < len; j++) {
+          sum += nums[j]
+          if (sum >= target) {
+              res = Math.min(res, j - i + 1);
+              break
+          }
+      }
   }
-  return min === len - 1 ? 0 : min
+  return res == Infinity ? 0 : res;
 }
 // @lc code=end
 

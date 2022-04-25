@@ -30,13 +30,24 @@
  *   7: 1
  * }
  */
-function twoSum(nums, target) {
-  const obj = {}
+// function twoSum(nums, target) {
+//   const map = {}
+//   for (let i = 0; i < nums.length; i++) {
+//     if (map[target - nums[i]] !== undefined) {
+//       return [map[target - nums[i]], i]
+//     } else {
+//       map[nums[i]] = i
+//     }
+//   }
+// }
+
+function twoSum (nums, target) {
+  const map = new Map()
   for (let i = 0; i < nums.length; i++) {
-    if (target - nums[i] in obj) {
-      return [obj[target - nums[i]], i]
+    if (map.has(target - nums[i])) {
+      return [map.get(target - nums[i]), i]
     } else {
-      obj[nums[i]] = i
+      map.set(nums[i], i)
     }
   }
 }
