@@ -21,7 +21,7 @@ var subsets = function(nums) {
 
   function backTrack(cur) {
     res.push([...path])
-    if (cur === nums.length) {
+    if (path.length === nums.length) {
       return
     }
 
