@@ -13,6 +13,14 @@
 /**
  * 
  * [1,3,0,2]
+ * 
+ * [0,x,0,0]
+ * [0,0,0,0]
+ * [0,0,0,0]
+ * [0,0,0,0]
+ * 
+ * 
+ * [2,0,3,1]
  */
 var solveNQueens = function(n) {
   let res = []
@@ -31,7 +39,7 @@ var solveNQueens = function(n) {
 
     for (let col = 0; col < n; col++) {
       const conNotSet = path.some((c, r) => {
-        return c === col || (r - c === row - col)|| (r + c === row + col)
+        return c === col || (r - c === row - col) || (r + c === row + col)
       })
 
       if (conNotSet) {
