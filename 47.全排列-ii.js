@@ -21,7 +21,7 @@
  */
 function permuteUnique (nums) {
 
-  nums.sort((a, b) => b - a)
+  nums.sort((a, b) => a - b)
 
   let res = []
   let path = []
@@ -35,7 +35,8 @@ function permuteUnique (nums) {
       return 
     }
     for (let i = 0; i < nums.length; i++) {
-      if (nums[i] === nums[i - 1] && !used[i - 1]) {
+
+      if (nums[i] === nums[i - 1] && used[i - 1]) {
         continue
       }
       if (!used[i]) {
@@ -45,7 +46,6 @@ function permuteUnique (nums) {
         path.pop()
         used[i] = false
       }
-      
     }
   }
 }
