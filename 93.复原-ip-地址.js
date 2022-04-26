@@ -22,7 +22,7 @@ var restoreIpAddresses = function(s) {
   backTrack(0)
   return res
   function backTrack (cur) {
-    if (path.length === 4 && path.join('').length === s.length) {
+    if (path.length === 4 && cur === s.length) {
       res.push(path.join('.'))
       return 
     }

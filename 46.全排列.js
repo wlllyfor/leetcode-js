@@ -49,35 +49,6 @@
  * @return {number[][]}
  */
 
- function permute(nums) {
-  let res = []
-  let path = []
-  let used = {}
-
-  backTrack()
-
-  function backTrack () {
-    if (path.length === nums.length) {
-      return res.push([...path])
-    }
-
-    for (let num of nums) {
-      if (used[num]) {
-        continue
-      }
-
-      path.push(num)
-      used[num] = true
-      backTrack()
-      path.pop()
-      used[num] = false
-    }
-
-  }
-  return res
-}
-
-
 // function permute (nums) {
 //   let path = []
 //   let res = []
@@ -125,5 +96,36 @@
 
 //   }
 // }
+
+ function permute(nums) {
+  let res = []
+  let path = []
+  let used = {}
+
+  backTrack()
+
+  return res
+  function backTrack () {
+    if (path.length === nums.length) {
+      return res.push([...path])
+    }
+
+    for (let num of nums) {
+      if (used[num]) {
+        continue
+      }
+
+      path.push(num)
+      used[num] = true
+      backTrack()
+      path.pop()
+      used[num] = false
+    }
+
+  }
+  
+}
+
+
 // @lc code=end
 
