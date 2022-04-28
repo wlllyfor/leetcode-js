@@ -17,15 +17,18 @@ var uniquePathsWithObstacles = function(obstacleGrid) {
     return new Array(n).fill(0)
   })
 
-  for(let i=0; i<m && obstacleGrid[i][0]===0; i++){
+  for (let i = 0; i < m && obstacleGrid[i][0] === 0; i++) {
     dp[i][0] = 1
   }
-  for(let i=0; i<n && obstacleGrid[0][i]===0; i++){
-    dp[0][i] = 1
+
+  for (let j = 0; j < n && obstacleGrid[0][j] === 0; j++) {
+    dp[0][j] = 1
   }
 
+  console.log('dp :>> ', dp);
+
   for (let i = 1; i < m; i++) {
-    for (let j = 1; i < n; j++) {
+    for (let j = 1; j < n; j++) {
       if (obstacleGrid[i][j] === 1 ) {
         dp[i][j] = 0
       } else {

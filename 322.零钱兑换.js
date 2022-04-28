@@ -29,21 +29,44 @@
  * @param {number} amount
  * @return {number}
  */
-var coinChange = function(coins, amount) {
-  const dp = []
+// var coinChange = function(coins, amount) {
+//   const dp = []
+//   dp[0] = 0
+//   for (let i = 1; i <= amount; i++) {
+//     dp[i] = Infinity
+//     for (let j = 0; j < coins.length; j++) {
+//       if (i - coins[j] >= 0) {
+//         dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1)
+//       }
+//     }
+//   }
+//   if (dp[amount] === Infinity) {
+//     return -1
+//   }
+//   return dp[amount]
+// };
+
+/**
+ * 
+ * 
+ * dp[i] = Math.min(dp[i], dp[i - coins[j]]) + 1
+ */
+function coinChange (coins, amount) {
+
+  
+  let dp = []
   dp[0] = 0
   for (let i = 1; i <= amount; i++) {
     dp[i] = Infinity
     for (let j = 0; j < coins.length; j++) {
-      if (i - coins[j] >= 0) {
-        dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1)
+      if (i >= coins[j]) {
+        dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1) 
       }
     }
   }
-  if (dp[amount] === Infinity) {
-    return -1
-  }
-  return dp[amount]
-};
+
+  return dp[amount] === Infinity ? -1 : dp[amount]
+
+}
 // @lc code=end
 
