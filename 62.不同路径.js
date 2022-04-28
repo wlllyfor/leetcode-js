@@ -17,10 +17,9 @@
  * dp[1][2] = dp[0][2] + dp[1][1]
  */
 var uniquePaths = function(m, n) {
-  let dp = []
-  for (let i = 0; i < m; i++) {
-    dp[i] = (new Array(n)).fill(1)
-  }
+  let dp = new Array(m).fill(1).map(() => {
+    return new Array(n).fill(1)
+  })
 
   for (let i = 1; i < m; i++) {
     for (let j = 1; j < n; j++) {
