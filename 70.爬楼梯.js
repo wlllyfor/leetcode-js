@@ -13,12 +13,35 @@
 /**
  * dp[i] = dp[i - 1] + dp[i - 2]
  */
-var climbStairs = function(n) {
-  let dp = [1, 2]
-  for (let i = 2; i < n; i++) {
-    dp[i] = dp[i - 1] + dp[i - 2]
+// var climbStairs = function(n) {
+//   let dp = [1, 2]
+//   for (let i = 2; i < n; i++) {
+//     dp[i] = dp[i - 1] + dp[i - 2]
+//   }
+//   return dp[n - 1]
+// };
+// function climbStairs (n) {
+//   if ( n < 3) {
+//     return n
+//   }
+//   let p = 1, q = 2, r
+//   for (let i = 2; i < n; i++) {
+//     r = p + q
+//     p = q
+//     q = r
+//   }
+//   return r
+// }
+
+function climbStairs (n) {
+  let p = 0, q = 1, r
+  for (let i = 0; i < n; i++) {
+    r = p + q
+    p = q
+    q = r
   }
-  return dp[n - 1]
-};
+  return r
+}
+
 // @lc code=end
 
