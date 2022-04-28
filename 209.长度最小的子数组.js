@@ -134,37 +134,37 @@
  * 
  *  
  */
-// function minSubArrayLen (target, nums) {
-//   let slow = 0, fast = 0
-//   let len = nums.length
-//   let res = Infinity
-//   let sum = 0
-//   while(fast < len) {
-//     sum += nums[fast]
-//     while (sum >= target) {
-//       res = Math.min(fast - slow + 1, res)
-//       sum -= nums[slow]
-//       slow++
-//     }
-//     fast++
-//   }
-//   return res === Infinity ? 0 : res
-// }
-
 function minSubArrayLen (target, nums) {
+  let slow = 0, fast = 0
   let len = nums.length
   let res = Infinity
-  for (let i = 0; i < len; i++) {
-      let sum = 0
-      for (let j = i; j < len; j++) {
-          sum += nums[j]
-          if (sum >= target) {
-              res = Math.min(res, j - i + 1);
-              break
-          }
-      }
+  let sum = 0
+  while(fast < len) {
+    sum += nums[fast]
+    while (sum >= target) {
+      res = Math.min(fast - slow + 1, res)
+      sum -= nums[slow]
+      slow++
+    }
+    fast++
   }
-  return res == Infinity ? 0 : res;
+  return res === Infinity ? 0 : res
 }
+
+// function minSubArrayLen (target, nums) {
+//   let len = nums.length
+//   let res = Infinity
+//   for (let i = 0; i < len; i++) {
+//       let sum = 0
+//       for (let j = i; j < len; j++) {
+//           sum += nums[j]
+//           if (sum >= target) {
+//               res = Math.min(res, j - i + 1);
+//               break
+//           }
+//       }
+//   }
+//   return res == Infinity ? 0 : res;
+// }
 // @lc code=end
 
