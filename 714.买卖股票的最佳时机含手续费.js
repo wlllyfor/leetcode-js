@@ -11,6 +11,22 @@
  * @return {number}
  */
 
+// 贪心
+// [1,3,7,5,10,3]
+// function maxProfit (prices, fee) {
+//   let sum = 0
+//   let min = prices[0]
+//   for (let price of prices) {
+//     min = Math.min(min, price)
+//     let money = price - min - fee
+//     if (money > 0) {
+//       sum += money
+//       min = price - fee
+//     }
+//   }
+//   return sum
+// }
+
 /**
  * dp
  * 
