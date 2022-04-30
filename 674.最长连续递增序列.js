@@ -14,19 +14,34 @@
  * 
  * 
  */
-var findLengthOfLCIS = function(nums) {
-  let count = 1
-  let max = 1
+// var findLengthOfLCIS = function(nums) {
+//   let count = 1
+//   let max = 1
+//   for (let i = 1; i < nums.length; i++) {
+//     if (nums[i] > nums[i - 1]) {
+//       count++
+//       max = Math.max(max, count)
+//     }
+//     if (nums[i] <= nums[i - 1]) {
+//       count = 1
+//     }
+//   }
+//   return max
+// };
+
+/**
+ * dp[i + 1] = dp[i] + 1
+ */
+function findLengthOfLCIS (nums) {
+  let dp = [1]
   for (let i = 1; i < nums.length; i++) {
     if (nums[i] > nums[i - 1]) {
-      count++
-      max = Math.max(max, count)
-    }
-    if (nums[i] <= nums[i - 1]) {
-      count = 1
+      dp[i] = dp[i - 1] + 1
+    } else {
+      dp[i] = 1
     }
   }
-  return max
-};
+  return Math.max(...dp)
+}
 // @lc code=end
 
