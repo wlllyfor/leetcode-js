@@ -17,36 +17,34 @@
  * dp[i] = Math.max(dp[i - 1] + nums[i], nums[i])
  * res = Math.max(dp[i], res)
  */
-function maxSubArray (nums) {
-  let dp = [nums[0]]
-  let res = nums[0]
-  for (let i = 1; i < nums.length; i++) {
-    dp[i] = Math.max(dp[i - 1] + nums[i], nums[i])
-    res = Math.max(res, dp[i])
-  }
-  return res
-}
+// function maxSubArray (nums) {
+//   let dp = [nums[0]]
+//   let res = nums[0]
+//   for (let i = 1; i < nums.length; i++) {
+//     dp[i] = Math.max(dp[i - 1] + nums[i], nums[i])
+//     res = Math.max(res, dp[i])
+//   }
+//   return res
+// }
 
 /**
  * 
  * 贪心
  */
-// var maxSubArray = function(nums) {
+var maxSubArray = function(nums) {
   
-//   let res = -Infinity
-//   let sum = 0
-//   for (let num of nums) {
-//     sum += num
-//     if (sum > res) {
-//       res = sum
-//     }
+  let res = -Infinity
+  let sum = 0
+  for (let num of nums) {
+    sum += num
+    res = Math.max(sum, res)
 
-//     if (sum < 0) {
-//       sum = 0
-//     }
-//   }
-//   return res
-// };
+    if (sum < 0) {
+      sum = 0
+    }
+  }
+  return res
+};
 
 // @lc code=end
 
