@@ -38,6 +38,30 @@
  * 循环，每一轮 j++ 
  * 
  * nums[j] !== nums[j - 1] ------>  nums[i] = nums[j] i++ 
+ * 
+ *  i
+ * [0,0,1,1]
+ *  j
+ * 
+ *  i
+ * [0,0,1,1]
+ *    j
+ * 
+ *  i
+ * [0,0,1,1]
+ *      j
+ * 
+ *    i
+ * [0,1,1,1]
+ *        j
+ * 
+ *    i
+ * [0,1,1,1]
+ *          j
+ * 
+ *    i
+ * [1,2,3,4]
+ *    j
  */
 
 // @lc code=start
@@ -73,5 +97,19 @@ function removeDuplicates (nums) {
   }
   return slow + 1
 }
+
+function removeDuplicates (nums) {
+  const n = nums.length
+  let fast = 1, slow = 1
+  while (fast < n) {
+    if (nums[fast] !== nums[fast - 1]) {
+      nums[slow] = nums[fast]
+      slow++
+    }
+    fast++
+  }
+  return slow
+}
+
 // @lc code=end
 
