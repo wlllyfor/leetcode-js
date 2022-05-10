@@ -43,44 +43,63 @@
  * 
  * 初始化：
  *  i    
- * [1,0,1,0,3,12]
+ * [0,1,0,3,12]
  *  j
  * 
  * 下一步：
  * 
+ *  i    
+ * [0,1,0,3,12]
+ *    j
+ * 
+ *  i    
+ * [1,0,0,3,12]
+ *    j
+ * 
  *    i    
- * [1,0,1,0,3,12]
+ * [1,0,0,3,12]
  *    j
  * 
  * 下一步：
  * 
  *    i    
- * [1,0,1,0,3,12]
+ * [1,0,0,3,12]
  *      j
  * 
  * 下一步：
  * 
+ *    i    
+ * [1,0,0,3,12]
+ *        j
+ * 
+ *    i    
+ * [1,3,0,0,12]
+ *        j
+ * 
  *      i    
- * [1,1,0,0,3,12]
+ * [1,3,0,0,12]
  *        j
  * 
  * 下一步：
  * 
- *      i     
- * [1,1,0,0,3,12]
- *          j
+ *      i    
+ * [1,3,0,0,12]
+ *           j
+ * 
+ *      i    
+ * [1,3,12,0,0]
+ *           j
+ * 
+ *         i    
+ * [1,3,12,0,0]
+ *           j
  * 
  * 下一步：
  * 
- *        i     
- * [1,1,3,0,0,12]
- *             j
- * 
- *  下一步：
- * 
- *           i     
- * [1,1,3,12,0,0]
- *               j
+ *         i    
+ * [1,3,12,0,0]
+ *              j
+ *
  * 
  */
 
@@ -118,5 +137,67 @@ function moveZeroes(nums) {
   }
   return nums
 }
+
+/**
+ *  i
+ * [0,1,0,3,12]
+ *  j
+ * 
+ *  i
+ * [0,1,0,3,12]  
+ *    j
+ * 
+ *    i
+ * [1,1,0,3,12]
+ *      j
+ * 
+ *    i
+ * [1,1,0,3,12]
+ *        j
+ * 
+ *      i
+ * [1,3,0,3,12]
+ *           j
+ * 
+ *         i
+ * [1,3,12,3,12]
+ *              j
+ * 
+ *         i
+ * [1,3,12,0,0]
+ *              j
+ * 
+ * 
+ */
+// function moveZeroes(nums) {
+//   let slow = 0
+//   for(let fast = 0; fast < nums.length; fast++) {
+//     if (nums[fast] !== 0) {
+//       nums[slow] = nums[fast]
+//       slow++
+//     }
+//   }
+//   for(let i = slow; i < nums.length; i++) {
+//     nums[i] = 0
+//   }
+//   return nums
+// }
+
+// function moveZeroes(nums) {
+//   let slow = 0, fast = 0, len = nums.length
+//   while (slow < len) {
+//     if (fast < len) {
+//       if (nums[fast] !== 0) {
+//         nums[slow] = nums[fast]
+//         slow++
+//       }
+//       fast++
+//     } else {
+//       nums[slow] = 0
+//       slow++
+//     }
+//   }
+//   return nums
+// }
 // @lc code=end
 

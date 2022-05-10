@@ -40,28 +40,40 @@
  * nums[j] !== nums[j - 1] ------>  nums[i] = nums[j] i++ 
  * 
  *  i
- * [0,0,1,1]
+ * [0,0,1,1,2]
  *  j
  * 
  *  i
- * [0,0,1,1]
+ * [0,0,1,1,2]
  *    j
  * 
  *  i
- * [0,0,1,1]
+ * [0,0,1,1,2]
  *      j
  * 
  *    i
- * [0,1,1,1]
+ * [0,0,1,1,2]
+ *      j
+ * 
+ *    i
+ * [0,1,1,1,2]
+ *      j
+ * 
+ *    i
+ * [0,1,1,1,2]
  *        j
  * 
  *    i
- * [0,1,1,1]
+ * [0,1,1,1,2]
  *          j
  * 
- *    i
- * [1,2,3,4]
- *    j
+ *      i
+ * [0,1,1,1,2]
+ *          j
+ * 
+ *      i
+ * [0,1,2,1,2]
+ *          j
  */
 
 // @lc code=start
@@ -109,6 +121,19 @@ function removeDuplicates (nums) {
     fast++
   }
   return slow
+}
+
+function removeDuplicates (nums) {
+  const len = nums.length
+  let fast = 1, slow = 0
+  while (fast < len) {
+    if (nums[fast] !== nums[fast - 1]) {
+      slow++
+      nums[slow] = nums[fast]
+    }
+    fast++
+  }
+  return slow + 1
 }
 
 // @lc code=end
