@@ -16,9 +16,42 @@
  * @param {number} val
  * @return {number}
  * 
- *              i
- * [0,1,3,0,4,2,4,2]
- *                  j
+ * 2
+ * 
+ *  i
+ * [0,2,2,3,1]
+ *  j
+ * 
+ *    i
+ * [0,2,2,3,1]
+ *    j
+ * 
+ *    i
+ * [0,2,2,3,1]
+ *      j
+ * 
+ *    i
+ * [0,2,2,3,1]
+ *        j
+ * 
+ *    i
+ * [0,3,2,3,1]
+ *        j
+ * 
+ * 
+ *      i
+ * [0,3,2,3,1]
+ *          j
+ * 
+ *      i
+ * [0,3,1,3,1]
+ *          j
+ * 
+ *        i
+ * [0,3,1,3,1]
+ *            j
+ * 
+ * 
  * 
  */
 function removeElement (nums, val) {
@@ -35,66 +68,42 @@ function removeElement (nums, val) {
 };
 
 /**
- * 
- *  l         
- * [3,2,2,3]  
- *        r
- * 
- *  l         
- * [3,2,2,3]  
- *      r
- * 
- *  l         
- * [2,2,2,3]  
- *      r
- * 
- *    l         
- * [2,2,2,3]  
- *      r
- * 
- * 3
- * 
- * 
  *  l
- * [0,1,2,2,3,0,4,2]
- *                r
+ * [0,2,2,3,1]
+ *          r
  * 
  *    l
- * [0,1,2,2,3,0,4,2]
- *                r
+ * [0,2,2,3,1]
+ *          r
+ * 
+ *    l
+ * [0,1,2,3,1]
+ *          r
+ * 
+ *    l
+ * [0,1,2,3,1]
+ *        r
  * 
  *      l
- * [0,1,2,2,3,0,4,2]
- *                r
+ * [0,1,2,3,1]
+ *        r
  * 
  *      l
- * [0,1,2,2,3,0,4,2]
- *              r
- * 
- *      l
- * [0,1,4,2,3,0,4,2]
- *              r
+ * [0,1,3,3,1]
+ *        r
  * 
  *        l
- * [0,1,4,2,3,0,4,2]
- *              r
+ * [0,1,3,3,1]
+ *        r
  * 
- *        l
- * [0,1,4,4,3,0,4,2]
- *              r
+ *      i
+ * [2,2,2,3]
+ *    j
  * 
- *          l
- * [0,1,4,4,3,0,4,2]
- *              r
  * 
- *            l
- * [0,1,4,4,3,0,4,2]
- *              r
  * 
- *              l
- * [0,1,4,4,3,0,4,2]
- *              r
  * 
+ *  
  * 2
  */
 
@@ -110,6 +119,51 @@ function removeElement (nums, val) {
   }
   return left
 }
+
+function removeElement (nums, val) {
+  let left = 0, right = nums.length
+  while (left < right) {
+    if (nums[left] === val) {
+      nums[left] = nums[right - 1]
+      right--
+    } else {
+      left++
+    }
+  }
+  return left
+}
+
+/**
+ * 
+ *      i
+ * [0,3,1]
+ *      j
+ * 
+ */
+function removeElement (nums, val) {
+  let res = 0
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === val){
+      nums.splice(i,1)
+      i--
+    } else{
+      res++
+    }
+  }
+  return res
+}
+
+function removeElement (nums, val) {
+  let count = 0
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === val) {
+      count++
+    }
+  }
+  return nums.length - count
+}
+
+
 
 // @lc code=end
 
