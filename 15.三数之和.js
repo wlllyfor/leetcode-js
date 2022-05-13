@@ -12,14 +12,14 @@
  * [-4,-1,-1,0,1,2]
  * 
  * 
- * 遍历数组，定义两个指针 l 和 k，j 指向第 i + 1个元素，k 指向最末尾元素
+ * 遍历数组，定义两个指针 l 和 r，l 指向第 i + 1个元素，r 指向最末尾元素
  * 
  *   i  l          r
  * [-4,-1,-1,0,1,2,9]
  * 
  * nums[i] + nums[l] + nums[r] 和 0 作比较
- * nums[i] + nums[l] + nums[r] > 0，说明 r 大了，k 左移
- * nums[i] + nums[l] + nums[r] < 0，说明 l 小了，j 右移
+ * nums[i] + nums[l] + nums[r] > 0，说明 r 大了，r 左移
+ * nums[i] + nums[l] + nums[r] < 0，说明 l 小了，l 右移
  * nums[i] + nums[l] + nums[r] = 0，找到，记录下来
  * 
  * 注意要去重
@@ -30,6 +30,14 @@
  * 遇到 nums[l] === nums[l+1] l++
  * 遇到 nums[r] === nums[r-1] r++
  * 
+ * 
+ * [-1,0,1,2,-1,-4]
+ * 
+ * 排序
+ * 
+ * 
+ * [-4,-1,1,0,1,2]
+ * 
  */
 
 // @lc code=start
@@ -37,7 +45,7 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function(nums) {
+function threeSum (nums) {
   let res = []
   let len = nums.length
   if (len < 3) {
@@ -82,6 +90,50 @@ var threeSum = function(nums) {
   return res
   
 };
+
+function threeSum (nums) {
+  let res = []
+  let len = nums.length
+
+  nums.sort((a, b) => a - b)
+
+  for (let i = 0; i < len; i++) {
+
+    if (nums[i] > 0) {
+      break
+    }
+
+    if (nums[i] === nums[i - 1]) {
+      continue
+    }
+    
+    let left = i + 1
+    let right = len - 1
+
+    while (left < right) {
+      const sum = nums[i] + nums[left] + nums[right]
+      if (sum === 0) {
+        res.push([nums[i], nums[left], nums[right]])
+        while(nums[left] === nums[left + 1]) {
+          left++
+        }
+        while(nums[right] === nums[right - 1]) {
+          right--
+        }
+        right--
+      }
+      if (sum > 0) {
+        right--
+      }
+      if (sum < 0) {
+        left++
+      }
+      
+    }
+  }
+
+  return res
+}
 // @lc code=end
 
 
