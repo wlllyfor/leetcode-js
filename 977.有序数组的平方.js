@@ -32,19 +32,53 @@
  * [-4,-1,0,3,10]
  * 
  */
-var sortedSquares = function(nums) {
+
+function sortedSquares (nums) {
+  return nums.map(i => i * i).sort((a, b) => a - b)
+}
+
+/**
+ * 
+ *  i
+ * [-4,-1,0,3,10]
+ *            j
+ *    
+ */
+ function sortedSquares (nums) {
   let left = 0, right = nums.length - 1
+  let res = []
 
-  const res = []
-  while (left <= right) {
+  while(left <= right) {
+    let leftNumSquare = nums[left] * nums[left]
+    let rightNumSquare = nums[right] * nums[right]
 
-    if (Math.abs(nums[left]) > Math.abs(nums[right])) {
-      res.unshift(nums[left] * nums[left])
+    if (leftNumSquare > rightNumSquare) {
+      res.unshift(leftNumSquare)
       left++
     } else {
-      res.unshift(nums[right] * nums[right])
+      res.unshift(rightNumSquare)
       right--
     }
+  }
+  return res
+}
+
+function sortedSquares (nums) {
+  let left = 0
+  let right = nums.length-1
+  let res = []
+  let index = right
+  while(left <= right){
+    let leftNumSquare = nums[left] * nums[left]
+    let rightNumSquare = nums[right] * nums[right]
+    if(leftNumSquare > rightNumSquare){
+      res[index] = leftNumSquare
+      left++
+    } else {
+      res[index] = rightNumSquare
+      right++
+    }
+    index--
   }
   return res
 };
