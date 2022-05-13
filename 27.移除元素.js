@@ -92,13 +92,14 @@ function removeElement (nums, val) {
  * [0,1,3,3,1]
  *        r
  * 
+ *      l
+ * [0,1,3,3,1]
+ *      r
+ * 
  *        l
  * [0,1,3,3,1]
- *        r
+ *      r
  * 
- *      i
- * [2,2,2,3]
- *    j
  * 
  * 
  * 
@@ -161,6 +162,29 @@ function removeElement (nums, val) {
     }
   }
   return nums.length - count
+}
+
+/**
+ *  l
+ * [0,2,2,3,1]
+ *          r
+ *  l
+ * [1]
+ *  r
+ */
+function removeElement (nums, val) {
+  let left = 0, right = nums.length - 1
+
+  while (left < right) {
+    if (nums[left] === val) {
+
+      nums[left] = nums[right]
+      right--
+    } else {
+      left++
+    }
+  }
+  return nums[left + 1] !== undefined ? left + 1 : left
 }
 
 
