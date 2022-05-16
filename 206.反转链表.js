@@ -28,16 +28,28 @@
  * 
  * 
  */
-var reverseList = function(head) {
-  let cur = null
-  let tmp = head
-  while(tmp) {
-    let next = tmp.next
-    tmp.next = cur
-    cur = tmp
-    tmp = next
+// function reverseList (head) {
+//   let cur = null
+//   let tmp = head
+//   while(tmp) {
+//     let next = tmp.next
+//     tmp.next = cur
+//     cur = tmp
+//     tmp = next
+//   }
+//   return cur
+// }
+
+function reverseList (head) {
+  let pre = null
+  let cur = head
+  while(cur) {
+    let next = cur.next
+    cur.next = pre
+    pre = cur
+    cur = next
   }
-  return cur
-};
+  return pre
+}
 // @lc code=end
 

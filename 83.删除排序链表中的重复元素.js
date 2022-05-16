@@ -21,7 +21,7 @@
  * 
  * 
  */
-var deleteDuplicates = function(head) {
+function deleteDuplicates (head) {
   let tmp = head
   while(tmp && tmp.next) {
     while (tmp.next && tmp.next.val === tmp.val) {
@@ -30,6 +30,6 @@ var deleteDuplicates = function(head) {
     tmp = tmp.next
   }
   return head
-};
+}
 // @lc code=end
 

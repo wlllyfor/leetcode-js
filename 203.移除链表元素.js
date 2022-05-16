@@ -19,7 +19,7 @@
  * 
  * [7,7,7,7]
  */
-var removeElements = function(head, val) {
+function removeElements (head, val) {
   let zero = {
     next: head
   }
