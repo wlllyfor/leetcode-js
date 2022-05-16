@@ -29,7 +29,7 @@ function getLength (head) {
 /**
  *
  */
-var removeNthFromEnd = function(head, n) {
+ function removeNthFromEnd (head, n) {
   let len = getLength(head)
   let zero = {
     next: head
@@ -72,4 +72,3 @@ function removeNthFromEnd(head, n) {
   return zero.next
 }
 // @lc code=end
-
