@@ -21,30 +21,28 @@
 function getLength (head) {
   let len = 0
   while(head) {
-    head  = head.next
+    head = head.next
     len++
   }
   return len
 }
-/**
- *
- */
- function removeNthFromEnd (head, n) {
+function removeNthFromEnd (head, n) {
   let len = getLength(head)
-  let zero = {
+  let dummy = {
     next: head
   }
-  let tmp = zero
+  let tmp = dummy
   let i = 0
   while(tmp) {
     if (len - n === i) {
       tmp.next = tmp.next.next
+      break
     }
     tmp = tmp.next
     i++
   }
-  return zero.next
-};
+  return dummy.next
+}
 
 /**
  * i j
@@ -55,20 +53,29 @@ function getLength (head) {
  * 然后快慢指针一起移动，当快指针移动到链表末尾时，慢指针的位置就是 n 的位置
  * 
  */
+/**
+ * 2
+ *     i
+ * 0 1 2 3 4 5
+ * j
+ * 
+ * 1
+ * 
+ * 0 1
+ */
 function removeNthFromEnd(head, n) {
-  let zero = {
+  let dummy = {
     next: head
   }
-  let slow = fast = zero
-  while (n) {
+  let slow = fast = dummy
+  while (n--) {
     fast = fast.next
-    n--
   }
-  while (fast) {
+  while (fast.next) {
     slow = slow.next
     fast = fast.next
   }
   slow.next = slow.next.next
-  return zero.next
+  return dummy.next
 }
 // @lc code=end

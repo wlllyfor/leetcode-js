@@ -13,28 +13,28 @@
  * }
  */
 /**
- * @param {ListNode} list1
- * @param {ListNode} list2
+ * @param {ListNode} l1
+ * @param {ListNode} l2
  * @return {ListNode}
  */
- function mergeTwoLists (list1, list2) {
-  let zero = {
-    next: new ListNode()
+function mergeTwoLists (l1, l2) {
+  let dummy = {
+    next: null
   }
-  let tmp = zero
-  while (list1 && list2) {
-    if (list1.val <= list2.val) {
-      tmp.next = list1
-      list1 = list1.next
+  let tmp = dummy
+  while (l1 && l2) {
+    if (l1.val <= l2.val) {
+      tmp.next = l1
+      l1 = l1.next
     } else {
-      tmp.next = list2
-      list2 = list2.next
+      tmp.next = l2
+      l2 = l2.next
     }
     tmp = tmp.next
   }
-  tmp.next = list1 ? list1 : list2
-  return zero.next
-};
+  tmp.next = l1 ? l1 : l2
+  return dummy.next
+}
 
 // function mergeTwoLists(l1, l2) {
 //   if (!l1) {

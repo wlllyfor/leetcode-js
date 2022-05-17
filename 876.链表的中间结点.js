@@ -33,25 +33,22 @@ function getLength(head) {
 }
 function middleNode (head) {
   let len = getLength(head)
-  let mid = Math.floor(len / 2) + 1
-  let zero = {
-    next: head
+  let mid = Math.floor(len / 2)
+  while(mid--) {
+    head = head.next
   }
-  while(mid) {
-    zero = zero.next
-    mid--
-  }
-  return zero
+  return head
 }
 
-function middleNode (head) {
-  let fast = slow = head
-  while(fast && fast.next) {
-    fast = fast.next.next
-    slow = slow.next
-  }
-  return slow
-}
+// function middleNode (head) {
+//   let fast = slow = head
+//   while(fast && fast.next) {
+//     fast = fast.next.next
+//     slow = slow.next
+//   }
+//   return slow
+// }
+
 
 // @lc code=end
 
@@ -60,6 +57,6 @@ function middleNode (head) {
  * 删除链表的倒数第 N 个节点
  * 合并两个有序链表
  * 环形链表
- * 环形链表 - II
  * 相交链表
+ * 回文链表
  */
