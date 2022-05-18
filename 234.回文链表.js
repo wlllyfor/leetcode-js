@@ -19,32 +19,31 @@
  *  i     j
  * [1,2,2,1]
  */
-// var isPalindrome = function(head) {
-//   let arr = []
-//   while(head) {
-//     arr.push(head.val)
-//     head = head.next
-//   }
-//   let l = 0, r = arr.length - 1
-//   while(l < r) {
-//     if (arr[l] !== arr[r]) {
-//       return false
-//     }
-//     l++
-//     r--
-//   }
-//   return true
-// };
+function isPalindrome (head) {
+  let arr = []
+  while(head) {
+    arr.push(head.val)
+    head = head.next
+  }
+  let l = 0, r = arr.length - 1
+  while(l < r) {
+    if (arr[l] !== arr[r]) {
+      return false
+    }
+    l++
+    r--
+  }
+  return true
+}
 
-// function isPalindrome(head) {
-//   let str = ''
-//   while(head) {
-//     str += head.val
-//     head = head.next
-//   }
-//   console.log(str)
-//   return str.split('').reverse().join('') === str
-// }
+function isPalindrome(head) {
+  let str = ''
+  while(head) {
+    str += head.val
+    head = head.next
+  }
+  return str.split('').reverse().join('') === str
+}
 
 function isPalindrome(head) {
   let pre = null
