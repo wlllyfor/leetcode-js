@@ -10,7 +10,7 @@
  * @param {number} target
  * @return {number}
  */
-var searchInsert = function(nums, target) {
+ function searchInsert (nums, target) {
   let left = 0
   let right = nums.length - 1
 
@@ -25,6 +25,6 @@ var searchInsert = function(nums, target) {
     }
   }
   return left
-};
+}
 // @lc code=end
 

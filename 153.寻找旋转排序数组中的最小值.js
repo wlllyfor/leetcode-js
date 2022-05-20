@@ -18,14 +18,14 @@
  * 
  * [2,1]
  */
-var findMin = function(nums) {
+ function findMin (nums) {
   let left = 0
   let right = nums.length - 1
 
-  while (left < right) { // 注意边界条件
+  while (left < right) { 
     let mid = (left + right) >> 1
     if (nums[mid] < nums[right]) {
-      right = mid // 当前这个值有可能是需要的
+      right = mid 
     } else {
       left = mid + 1
     }

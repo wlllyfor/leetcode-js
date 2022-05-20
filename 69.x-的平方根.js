@@ -9,34 +9,73 @@
  * @param {number} x
  * @return {number}
  * 
- * [1,2,3,4,5,6,7,8]
+ *  i                 j
+ * [0,1,2,3,4,5,6,7,8,9]
+ *          k
+ * 
+ *  i       j
+ * [0,1,2,3,4,5,6,7,8,9]
+ *      k   
+ * 
+ *        i j
+ * [0,1,2,3,4,5,6,7,8,9]
+ *      k             
  */
-var mySqrt = function(x) {
+function mySqrt (x) {
   let left = 0
   let right = x
   while (left <= right) {
-    let mid = (left + right) >> 1
+    let mid = Math.floor((left + right) / 2)
     if (mid * mid > x) {
       right = mid - 1
-    } else {
+    } else if (mid * mid < x) {
       left = mid + 1
+    } else {
+      return mid
     }
   }
+
+  // 这里返回 left - 1 也是一样的
   return right
 };
 
-// function mySqrt(x) {
-//   let left = 0
-//   let right = x
-//   while (left <= right) {
-//     let mid = (left + right) >> 1
-//     if (mid * mid > x) {
-//       right = mid - 1
-//     } else {
-//       left = mid + 1
-//     }
-//   }
+/**
+ *  i               j
+ * [0,1,2,3,4,5,6,7,8]
+ *          k
+ * 
+ *  i       j
+ * [0,1,2,3,4,5,6,7,8]
+ *      k   
+ * 
+ *        i j
+ * [0,1,2,3,4,5,6,7,8]
+ *        k  
+ * 
+ *        i 
+ *        j
+ * [0,1,2,3,4,5,6,7,8]
+ *        k    
+ */
+function mySqrt (x) {
+  let left = 0
+  let right = x + 1
+  console.log(right)
+  while (left < right) {
+    let mid = Math.floor((left + right) / 2)
+    console.log(mid)
+    if (mid * mid > x) {
+      right = mid
+    } else if (mid * mid < x) {
+      left = mid + 1
+    } else {
+      return mid
+    }
+  }
+  return right - 1
 //   return left - 1
-// }
+};
+
 // @lc code=end
 
+// 2147483647
