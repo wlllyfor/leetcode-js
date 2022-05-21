@@ -26,5 +26,22 @@
   }
   return left
 }
+
+function searchInsert (nums, target) {
+  let left = 0
+  let right = nums.length // 注意区别
+
+  while (left < right) { // 注意区别
+    let mid = (left + right) >> 1
+    if (nums[mid] === target) {
+      return mid
+    } else if (nums[mid] > target) {
+      right = mid // 注意区别
+    } else {
+      left = mid + 1
+    }
+  }
+  return left
+}
 // @lc code=end
 

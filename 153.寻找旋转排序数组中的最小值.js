@@ -18,7 +18,7 @@
  * 
  * [2,1]
  */
- function findMin (nums) {
+function findMin (nums) {
   let left = 0
   let right = nums.length - 1
 
@@ -31,6 +31,7 @@
     }
   }
   return nums[left]
-};
+}
+
 // @lc code=end
 
