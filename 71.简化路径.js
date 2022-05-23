@@ -27,6 +27,6 @@ function simplifyPath (path) {
     }
   }
   return '/' + stack.join('/')
-};
+}
 // @lc code=end
 
