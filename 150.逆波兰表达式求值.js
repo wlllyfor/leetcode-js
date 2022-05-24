@@ -10,34 +10,34 @@
  * @return {number}
  */
 
-// function calc(val1, val2, s) {
-//   switch(s) {
-//     case '+':
-//     return val1 + val2
-//     case '-':
-//     return val1 - val2
-//     case '*':
-//     return val1 * val2
-//     case '/':
-//     return (val1 / val2) | 0
-//   }
-// }
+function calc(num1, num2, token) {
+  switch(token) {
+    case '+':
+      return num1 + num2
+    case '-':
+      return num1 - num2
+    case '*':
+      return num1 * num2
+    case '/':
+      const res = num1 / num2
+      return res > 0 ? Math.floor(res) : Math.ceil(res)
+  }
+}
 
-// var evalRPN = function(tokens) {
-  
-//   let stack = []
-//   for (let item of tokens) {
-//     if (item>= -200 && item <= 200) {
-//       stack.push(Number(item))
-//     } else {
-//       const val2 = stack.pop()
-//       const val1 = stack.pop()
-//       const calcRes = calc(val1, val2, item)
-//       stack.push(calcRes)
-//     }
-//   }
-//   return stack[0]
-// };
+function evalRPN (tokens) {
+  let stack = []
+  for (let token of tokens) {
+    if (!isNaN(token)) {
+      stack.push(Number(token))
+    } else {
+      const num2 = stack.pop()
+      const num1 = stack.pop()
+      const calcRes = calc(num1, num2, token)
+      stack.push(calcRes)
+    }
+  }
+  return stack[0]
+}
 
 // 策略模式
 function evalRPN (tokens) {
@@ -48,17 +48,43 @@ function evalRPN (tokens) {
     '/': (a, b) => (a / b) | 0,
   }
   let stack = []
-  for (let item of tokens) {
-    if (item in calc) {
-      const val2 = stack.pop()
-      const val1 = stack.pop()
-      const calcRes = calc[item](val1, val2)
+  for (let token of tokens) {
+    if (token in calc) {
+      const num2 = stack.pop()
+      const num1 = stack.pop()
+      const calcRes = calc[token](num1, num2)
       stack.push(calcRes)
     } else {
-      stack.push(Number(item))
+      stack.push(Number(token))
     }
   }
   return stack.pop()
 }
+
+
+function evalRPN (tokens) {
+  
+  let stack = []
+  for (let token of tokens) {
+    if (token === '+') {
+      stack.push(stack.pop() + stack.pop())
+    } else if (token === '-') {
+      const num2 = stack.pop()
+      const num1 = stack.pop()
+      stack.push(num1 - num2)
+    } else if (token === '*') {
+      stack.push(stack.pop() * stack.pop())
+    } else if (token === '/') {
+      const num2 = stack.pop()
+      const num1 = stack.pop()
+      const res = num1 / num2
+      stack.push(res > 0 ? Math.floor(res) : Math.ceil(res))
+    } else {
+      stack.push(Number(token))
+    }
+  }
+  return stack[0]
+}
+
 // @lc code=end
 
