@@ -38,6 +38,48 @@ function movingCount(m, n, k) {
   return dfs(0, 0);
 }
 
+// 只考虑向右和向下移动
+function movingCount(m, n, k) {
+  // 定义一个二维数组，用于标记格子是否被访问过
+  const visited = new Array(m);
+  for (let i = 0; i < m; i++) {
+    visited[i] = new Array(n).fill(false);
+  }
+
+  // 定义一个函数，用于计算一个数的数位之和
+  function getSum(num) {
+    let sum = 0;
+    while (num > 0) {
+      sum += num % 10;
+      num = Math.floor(num / 10);
+    }
+    return sum;
+  }
+
+  // 定义一个函数，用于搜索格子
+  function dfs(i, j) {
+    // 如果格子越界或者数位之和大于k或者已经访问过，直接返回
+    if (
+      i < 0 ||
+      i >= m ||
+      j < 0 ||
+      j >= n ||
+      getSum(i) + getSum(j) > k ||
+      visited[i][j]
+    ) {
+      return 0;
+    }
+    // 标记格子为已访问
+    visited[i][j] = true;
+    // 继续向四个方向进行搜索，并累加已访问的格子数
+    return 1 + dfs(i + 1, j) + dfs(i, j + 1);
+  }
+
+  // 从起点开始搜索
+  return dfs(0, 0);
+}
+
+// bfs
 function movingCount(m, n, k) {
   // 定义一个二维数组，用于标记格子是否被访问过
   const visited = new Array(m);
@@ -84,6 +126,52 @@ function movingCount(m, n, k) {
     queue.push([i + 1, j]);
     queue.push([i, j - 1]);
     queue.push([i, j + 1]);
+  }
+
+  // 返回已访问的格子数
+  return count;
+}
+
+// 只考虑向右和向下移动
+function movingCount(m, n, k) {
+  // 定义一个二维数组，用于标记格子是否被访问过
+  const visited = new Array(m);
+  for (let i = 0; i < m; i++) {
+    visited[i] = new Array(n).fill(false);
+  }
+
+  // 定义一个函数，用于计算一个数的数位之和
+  function getSum(num) {
+    let sum = 0;
+    while (num > 0) {
+      sum += num % 10;
+      num = Math.floor(num / 10);
+    }
+    return sum;
+  }
+
+  // 定义一个变量，用于记录已访问的格子数
+  let count = 0;
+
+  // 从起点开始搜索
+  const queue = [[0, 0]];
+  visited[0][0] = true;
+  count++;
+
+  while (queue.length > 0) {
+    const [i, j] = queue.shift();
+    // 向右移动一格
+    if (j + 1 < n && !visited[i][j + 1] && getSum(i) + getSum(j + 1) <= k) {
+      visited[i][j + 1] = true;
+      count++;
+      queue.push([i, j + 1]);
+    }
+    // 向下移动一格
+    if (i + 1 < m && !visited[i + 1][j] && getSum(i + 1) + getSum(j) <= k) {
+      visited[i + 1][j] = true;
+      count++;
+      queue.push([i + 1, j]);
+    }
   }
 
   // 返回已访问的格子数
