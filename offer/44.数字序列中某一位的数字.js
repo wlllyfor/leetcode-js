@@ -1,3 +1,5 @@
+// 10 ** (k - 1) <= n < 10 ** k
+// res = n - 10 ** (k - 1)
 function findNthDigit(n) {
   let k = 1; // 数字的位数
   let count = 9; // 当前位数下数字的个数
