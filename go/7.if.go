@@ -90,27 +90,58 @@
 // 	fmt.Printf("你的等级是 %s\n", grade)
 // }
 
+// package main
+
+// import "fmt"
+
+// func main() {
+// 	var x interface{}
+
+// 	fmt.Print(x)
+
+// 	switch i := x.(type) {
+// 	case nil:
+// 		fmt.Printf(" x 的类型 :%T", i)
+// 	case int:
+// 		fmt.Printf("x 是 int 型")
+// 	case float64:
+// 		fmt.Printf("x 是 float64 型")
+// 	case func(int) float64:
+// 		fmt.Printf("x 是 func(int) 型")
+// 	case bool, string:
+// 		fmt.Printf("x 是 bool 或 string 型")
+// 	default:
+// 		fmt.Printf("未知型")
+// 	}
+// }
+
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
-	var x interface{}
 
-	fmt.Print(x)
+	c1 := make(chan string)
+	c2 := make(chan string)
 
-	switch i := x.(type) {
-	case nil:
-		fmt.Printf(" x 的类型 :%T", i)
-	case int:
-		fmt.Printf("x 是 int 型")
-	case float64:
-		fmt.Printf("x 是 float64 型")
-	case func(int) float64:
-		fmt.Printf("x 是 func(int) 型")
-	case bool, string:
-		fmt.Printf("x 是 bool 或 string 型")
-	default:
-		fmt.Printf("未知型")
+	go func() {
+		time.Sleep(1 * time.Second)
+		c1 <- "one"
+	}()
+	go func() {
+		time.Sleep(2 * time.Second)
+		c2 <- "two"
+	}()
+
+	for i := 0; i < 2; i++ {
+		select {
+		case msg1 := <-c1:
+			fmt.Println("received", msg1)
+		case msg2 := <-c2:
+			fmt.Println("received", msg2)
+		}
 	}
 }
