@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+</head>
+<body>
+  <script>
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+    // web3.eth.getBlockNumber().then(console.log);
+    // web3.eth.getChainId().then(console.log);
+    // web3.eth.getBalance('0x236f71611F61Aed57345B5bfB5F97146eCaC76FE').then((res) => {
+    //   console.log('res', res);
+    //   console.log('res', web3.utils.fromWei(res, 'ether'));
+    // });
+
+    web3.eth.requestAccounts().then(console.log);
+
+    // web3.eth.getAccounts()
+    // .then(console.log);
+    // web3.eth.sendTransaction({
+    //   from: '0x236f71611F61Aed57345B5bfB5F97146eCaC76FE',
+    //   to: '0xe5Cdc921c78C2a65495a2d075f4CF0f8cF008F5E',
+    //   value: web3.utils.toWei('1', 'ether')
+    // })
+    //   .then((res) => {
+    //     console.log('res', res);
+    //   });
+
+  </script>
+</body>
+</html>
