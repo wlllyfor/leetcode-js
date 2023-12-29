@@ -8,13 +8,14 @@ contract StudentListStorage {
     uint id;
     string name;
     uint age;
+    address account;
   }
 
   Student[] public StudentList;
 
   function addList(string memory _name, uint _age) public returns (uint) {
     uint count = StudentList.length;
-    StudentList.push(Student(count + 1, _name, _age));
+    StudentList.push(Student(count + 1, _name, _age, msg.sender));
     return StudentList.length;
   }
 

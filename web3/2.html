@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+</head>
+<body>
+  <input type="text" id="myName">
+  <input type="text" id="myAge">
+  <button id="add">add</button>
+  <ul id="list"></ul>
+  <script type="module">
+    const ABI = [
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "StudentList",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "age",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "_name",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_age",
+            "type": "uint256"
+          }
+        ],
+        "name": "addList",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getList",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "age",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+              }
+            ],
+            "internalType": "struct StudentListStorage.Student[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      }
+    ]
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+
+    // 授权
+    const account = await web3.eth.requestAccounts()
+
+    console.log('account', account);
+
+    // 连接智能合约程序
+    const studentStorage = await new web3.eth.Contract(ABI, '0x3E83D3c0675063107076351d51646D5C5E8378F7')
+
+    add.onclick = async function () {
+      const res = await studentStorage.methods.addList(myName.value, myAge.value).send({
+        from: account?.[0]
+      })
+      getList()
+    }
+
+    getList()
+
+    async function getList() {
+      const res = await studentStorage.methods.getList().call()
+      console.log('list', res);
+      list.innerHTML = res.map(item => `
+        <li>${item.id}-${item.name}-${item.age}</li>
+      `).join('')
+    }
+
+  </script>
+</body>
+</html>
