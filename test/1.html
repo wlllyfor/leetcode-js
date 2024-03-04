@@ -4,20 +4,24 @@
 <meta charset="utf-8"> 
 <title>test</title> 
 <style> 
-.a .item:last-of-type {
-  background-color: #ff0000;
-}
 </style>
 </head>
 <body>
-
-<ul class="a">
-  <li class="item">此元素背景色不是红色。</li>
-  <li class="item">我的也不是红色。</li>
-  <li class="item">我的才是红色。</li>
-  <div>123</div>
-  <div>333</div>
-</ul>
-
+  <textarea id="myTextarea" placeholder="请输入内容"></textarea>
+  <!-- <script>
+    // 获取 textarea 元素
+    var textarea = document.getElementById("myTextarea");
+  
+    // 保存初始内容
+    var initialContent = textarea.value;
+  
+    // 监听输入事件
+    textarea.addEventListener("input", function() {
+      // 如果用户输入内容为空，则恢复初始内容
+      if (textarea.value.trim() === "") {
+        textarea.value = initialContent;
+      }
+    });
+  </script> -->
 </body>
 </html>
