@@ -1,0 +1,19 @@
+{
+  "name": "1-iframe-isolate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "main-start": "node main-server.js",
+    "micro-start": "node micro-server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "ip": "^2.0.1"
+  }
+}
