@@ -125,3 +125,81 @@ in fact, the `instanceof` operator is originally used to check if the `prototype
 
 At this point, `Object.prototype.toString` appears. In actual projects, it is commonly used to encapsulate utility functions for type checking.
 
+### Object.prototype.toString.call()
+
+When invoking the `Object.prototype.toString` method, it will uniformly return a string in a format of `[object Xxx]`, which is used to represent the type of the Obejct(the primitive types are wrapper objects).
+
+It should be noted that when calling this method, the `call` method needs to be added(the reason will be explained later), as shown in the following code:
+
+```js
+// be attention, we need add .call function behind
+// reference types
+console.log(Object.prototype.toString.call({})); // '[object Object]'
+console.log(Object.prototype.toString.call(function () {})); // "[object Function]'
+console.log(Object.prototype.toString.call(/123/g)); // '[object RegExp]'
+console.log(Object.prototype.toString.call(new Date())); // '[object Date]'
+console.log(Object.prototype.toString.call(new Error())); // '[object Error]'
+console.log(Object.prototype.toString.call([])); // '[object Array]'
+console.log(Object.prototype.toString.call(new Map())); // '[object Map]'
+console.log(Object.prototype.toString.call(new Set())); // '[object Set]'
+console.log(Object.prototype.toString.call(new WeakMap())); // '[object WeakMap]'
+console.log(Object.prototype.toString.call(new WeakSet())); // '[object WeakSet]'
+
+// primitive types
+console.log(Object.prototype.toString.call(1)); // '[object Number]'
+console.log(Object.prototype.toString.call("abc")); // '[object String]'
+console.log(Object.prototype.toString.call(true)); // '[object Boolean]'
+console.log(Object.prototype.toString.call(1n)); // '[object BigInt]'
+console.log(Object.prototype.toString.call(null)); // '[object Null]'
+console.log(Object.prototype.toString.call(undefined)); // '[object Undefined]'
+console.log(Object.prototype.toString.call(Symbol("a"))); // '[object Symbol]'
+```
+
+With the above foundation, we can now uniformly invoke `Object.prototype.toString` method to obtain the specific type of data. Then, remove the extra characters and only extract the `Xxx` from `[object Xxx]`.
+
+However, when checking primitive types, it will create extra wrapper objects, to aviod this, we can combine `typeof` to determine primitive types except `null`, so the final code implementation is as follows: 
+
+```js
+function getType(target) {
+  // use typeof to check first, if it is primitive types, return directly
+  const type = typeof target;
+  if (type !== "object") {
+    return type;
+  }
+
+  // if it is a reference type or null, check it as follow, use RegExp, ensuring that the returned type is in lowercase.
+  return Object.prototype.toString
+    .call(target)
+    .replace(/^\[object (\S+)\]$/, "$1")
+    .toLocaleLowerCase();
+}
+```
+
+In the above code, we use `replace` method and regular expressions to extract `Xxx` from `[object Xxx]`, you may be confused about regular expressions, don't worry, we will introduce it in later course and explain how it works.
+
+Actually, we can use another way to solve this challenge, as shown in the following code:
+
+```js
+return Object.prototype.toString
+  .call(target)
+  .match(/\s([a-zA-Z]+)\]$/)[1] // use match is also ok
+  .toLocaleLowerCase();
+```
+
+Without regular expressions is also ok, we can use anyway as long as we achieve it, as shown in the following code:
+
+ ```js
+return Object.prototype.toString
+  .call(target)
+  .slice(8, -1) // use slice is also ok
+  .toLocaleLowerCase();
+```
+
+However, personally, I believe the first solving way has the highest readability, so I introduced it first.
+
+With that, the `getType` method is complete, this utility method is very useful. With it, we no more need to write the lengthy type-checking code in business logic. Hurry up and use it in your actual projects and enjoy the benifits it brings.
+
+
+## knowledge extension
+
+### why we need to use call
