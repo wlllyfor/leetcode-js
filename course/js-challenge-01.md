@@ -199,7 +199,42 @@ However, personally, I believe the first solving way has the highest readability
 
 With that, the `getType` method is complete, this utility method is very useful. With it, we no more need to write the lengthy type-checking code in business logic. Hurry up and use it in your actual projects and enjoy the benifits it brings.
 
-
 ## knowledge extension
 
-### why we need to use call
+### why use call
+
+Answer the question left in the previous text, why is it necessary to write `Object.prototype.toString.call(xxx)` to determine the type of `xxx`?
+
+`call` is a method of function used to change what `this` points to, use the `apply` method is also ok.
+
+If we do not use `call` to change `this` point to our target variable `xxx`, `this` will always point to the called `Object.prototype`, which is the prototype object. When calling the `toString` method on `Object.prototype`, the result will always be `[object Object]`, as shown in the following code:
+
+```js
+Object.prototype.toString([]); // do not use call, output '[object Object]', 'this' point to 'Object.prototype', the type is determined as Object.
+Object.prototype.toString.call([]); // use call, output '[object Array]', 'this' point to '[]', the type is determined as Array.
+
+Object.prototype.toString(1); // do not use call, output '[object Object]', 'this' point to 'Object.prototype', the type is determined as Object.
+Object.prototype.toString.call(1); // use call, output '[object Number]', 'this' point to wrapper object 'Number {1}', the type is determined as Number.
+```
+
+we can rewrite the `Object.prototype.toString` method to print out the value of `this` for verification, as shown in the following code:
+
+```js
+// rewrite Object.prototype.toString method, only print this
+Object.prototype.toString = function () {
+  console.log(this);
+};
+// refrence types
+Object.prototype.toString([]); // output Object.prototype
+Object.prototype.toString.call([]); // output []
+
+// primitive types
+Object.prototype.toString(1); // output Object.prototype
+Object.prototype.toString.call(1); // output Number {1}, 'Number {1}' is a wrapper object that wraps primitive types with their corresponding reference types, giving them object-like properties.
+```
+
+Now you understand why we should use the call method, right? Of course, this is just a brief introduction. If you still doubt about `this` and `call`, don't worry, we will explain it in later course.
+
+In addition, there are some common interview questions about date types summarized at the end of the article, enjoy!
+
+### 
