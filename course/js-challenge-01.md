@@ -199,9 +199,9 @@ However, personally, I believe the first solving way has the highest readability
 
 With that, the `getType` method is complete, this utility method is very useful. With it, we no more need to write the lengthy type-checking code in business logic. Hurry up and use it in your actual projects and enjoy the benifits it brings.
 
-## knowledge extension
+## Knowledge extension
 
-### why use call
+### Why use call
 
 Answer the question left in the previous text, why is it necessary to write `Object.prototype.toString.call(xxx)` to determine the type of `xxx`?
 
@@ -217,14 +217,14 @@ Object.prototype.toString(1); // do not use call, output '[object Object]', 'thi
 Object.prototype.toString.call(1); // use call, output '[object Number]', 'this' point to wrapper object 'Number {1}', the type is determined as Number.
 ```
 
-we can rewrite the `Object.prototype.toString` method to print out the value of `this` for verification, as shown in the following code:
+We can rewrite the `Object.prototype.toString` method to print out the value of `this` for verification, as shown in the following code:
 
 ```js
 // rewrite Object.prototype.toString method, only print this
 Object.prototype.toString = function () {
   console.log(this);
 };
-// refrence types
+// reference types
 Object.prototype.toString([]); // output Object.prototype
 Object.prototype.toString.call([]); // output []
 
@@ -237,4 +237,20 @@ Now you understand why we should use the call method, right? Of course, this is 
 
 In addition, there are some common interview questions about date types summarized at the end of the article, enjoy!
 
-### 
+### Common interview question
+
+#### 1.What are the data types in JavaScript?
+
+Answer: The data types of JavaScript are divided into primitive types and reference types.
+
+There are 7 kinds of primitive types, they are:
+
+- [Boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean)
+- [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+- [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+- [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+- [Null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
+- [Undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+- [Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+
+[reference type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#%E5%AF%B9%E8%B1%A1)(also known as object type) is a general term that includes Array、Object、Funtion and all other objects.
