@@ -254,3 +254,35 @@ There are 7 kinds of primitive types, they are:
 - [Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 
 [reference type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#%E5%AF%B9%E8%B1%A1)(also known as object type) is a general term that includes Array、Object、Funtion and all other objects.
+
+#### 2.What is the result of `typeof null`?
+
+Answer:
+
+```js
+typeof null // 'object'
+```
+
+As a primitive type, why is `null` recognized as an object type by the `typeof` operator?
+
+In fact, this is a bug left behind by the first verson of JavaScript.
+
+In JavaScript, all data is represented as binary at the underlying level. It is considered as an 'object' type if the first three bits of the binary are 0. While the binary repersentation of `null` is all 0, obviously the first three bits are also 0, so when executing `typeof`, it will return 'object'.
+
+Why did those language design experts allow this bug to exist for so many years?
+
+因为这个 bug 牵扯了太多的 Web 系统，一旦改了，会产生更多的 bug，令很多系统无法工作，也许这个 bug 永远都不会修复了。
+
+Because this bug involves too many web systems, once fixed, it will generate more bugs and making many web systems unable to work. Perhaps this bug will never be fixed.
+
+判断一个类型为 `null` 可以这么写，直接判断变量全等于 `null`：
+
+We can write as follows to determine the type `null`, directly check if the variable is strictly equal to `null`.
+
+```js
+if (a === null) {
+  // do something
+}
+```
+
+
