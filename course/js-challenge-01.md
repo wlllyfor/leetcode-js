@@ -271,11 +271,7 @@ In JavaScript, all data is represented as binary at the underlying level. It is 
 
 Why did those language design experts allow this bug to exist for so many years?
 
-因为这个 bug 牵扯了太多的 Web 系统，一旦改了，会产生更多的 bug，令很多系统无法工作，也许这个 bug 永远都不会修复了。
-
 Because this bug involves too many web systems, once fixed, it will generate more bugs and making many web systems unable to work. Perhaps this bug will never be fixed.
-
-判断一个类型为 `null` 可以这么写，直接判断变量全等于 `null`：
 
 We can write as follows to determine the type `null`, directly check if the variable is strictly equal to `null`.
 
@@ -284,5 +280,23 @@ if (a === null) {
   // do something
 }
 ```
+
+#### 3.What is the difference between primitive types and reference types?
+
+Answer:
+
+| 类型       | 原始类型 | 对象类型     |
+| ---------- | -------- | ----------|
+| 值         | 不可改变 | 可以改变     |
+| 属性和方法  | 不能添加 | 能添加       |
+| 存储值     | 值       | 地址（指针） |
+| 比较       | 值的比较 | 地址的比较   |
+
+| type       | primitive type | reference type |
+| ---------- | -------------- | -------------- |
+| value      | can not be change | can change  |
+| property and method  | can not be added | can be added |
+| store      | value       | address(pointer) |
+| compare    | compare value | compare address  |
 
 
