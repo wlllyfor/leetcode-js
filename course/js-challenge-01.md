@@ -281,16 +281,9 @@ if (a === null) {
 }
 ```
 
-#### 3.What is the difference between primitive types and reference types?
+#### 3.What is the difference between primitive type and reference type?
 
 Answer:
-
-| 类型       | 原始类型 | 对象类型     |
-| ---------- | -------- | ----------|
-| 值         | 不可改变 | 可以改变     |
-| 属性和方法  | 不能添加 | 能添加       |
-| 存储值     | 值       | 地址（指针） |
-| 比较       | 值的比较 | 地址的比较   |
 
 | type       | primitive type | reference type |
 | ---------- | -------------- | -------------- |
@@ -299,4 +292,13 @@ Answer:
 | store      | value       | address(pointer) |
 | compare    | compare value | compare address  |
 
+#### 4. What is the difference between `typeof` and `instanceof`?
+
+Answer:
+
+- The `typeof` operator is used to determine the type of data.
+- The `instanceof` operator is used to check whether the `prototype` property of a constructor appears on the prototype chain of an instance object. It can also be used to determine the type of data.
+  - `typeof` returns a string representing the type of a variable, `instanceof` returns a boolean value.
+  - `typeof` can determine primitive types other than `null`, but when it comes to checking reference types, it can only accurately determine the function type, while it can not accurately determine other reference types.
+  - `instanceof` can accurately determine all kinds of reference types, but cannot correctly determine primitive types.
 
