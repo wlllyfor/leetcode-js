@@ -241,7 +241,9 @@ In addition, there are some common interview questions about date types summariz
 
 #### 1.What are the data types in JavaScript?
 
-Answer: The data types of JavaScript are divided into primitive types and reference types.
+Answer:
+
+The data types of JavaScript are divided into primitive types and reference types.
 
 There are 7 kinds of primitive types, they are:
 
@@ -292,7 +294,7 @@ Answer:
 | store      | value       | address(pointer) |
 | compare    | compare value | compare address  |
 
-#### 4. What is the difference between `typeof` and `instanceof`?
+#### 4.What is the difference between `typeof` and `instanceof`?
 
 Answer:
 
@@ -302,3 +304,42 @@ Answer:
   - `typeof` can determine primitive types other than `null`, but when it comes to checking reference types, it can only accurately determine the function type, while it can not accurately determine other reference types.
   - `instanceof` can accurately determine all kinds of reference types, but cannot correctly determine primitive types.
 
+#### 5.What problem did `Symbol` solve?
+
+Answer:
+
+`Symbol` is a feature introduced in ES6. It is a primitive type that represents a unique value and is mainly used to prevent object property name conflicts.
+
+In ES5, object property names are all strings, which can easily lead to conflicts. For example, you use an object provided by someone else and want to add new properties to it, the names of the new properties may conflict with existing ones.
+
+It would be great to have a rule that ensures each property name is unique, thus fundamentally prevent conflicts. This is one of the reasons why ES6 introduced Symbol.
+
+Object property names can now have two types: the original type, which is a string, and the newly added Symbol type. Any property name that belongs to the Symbol type is unique, ensuring that it will not conflict with other property names.
+
+The `Symbol` value is generated through the `Symbol` function, as shown in the following code:
+
+```js
+const obj = {
+  name: "lin",
+  age: 18,
+};
+
+obj.name = "xxx"; // Assign to obj.name, it will overwrite the privious value
+console.log(obj); // { name: 'xxx', age: 18 }
+```
+
+```js
+const obj = {
+  name: "lin",
+  age: 18,
+};
+const name = Symbol("name");
+
+obj[name] = "xxx"; // Use Symbol, it will not overwrite the privious value
+
+console.log(obj); // { name: 'lin', age: 18, Symbol(name): 'xxx' }
+console.log(obj.name); // 'lin'
+console.log(obj[name]); // 'xxx'
+```
+
+## Summary
