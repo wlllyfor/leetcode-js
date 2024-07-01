@@ -341,5 +341,3 @@ console.log(obj); // { name: 'lin', age: 18, Symbol(name): 'xxx' }
 console.log(obj.name); // 'lin'
 console.log(obj[name]); // 'xxx'
 ```
-
-## Summary
