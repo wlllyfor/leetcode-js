@@ -1,0 +1,40 @@
+@use "@/styles/common/variable.scss" as *;
+
+.inputContent__wrapper {
+  width: 100%;
+  margin-top: 16px;
+  input {
+    width: 90%;
+    margin-right: 10px;
+    min-width: 100px;
+    font-size: 14px;
+    padding: 4px;
+  }
+  label {
+    margin-right: 10px;
+    img {
+      vertical-align: super;
+    }
+  }
+  &.customerOrder {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin-top: 0;
+    .fileUploadWrapper {
+      width: 80%;
+    }
+    input {
+      width: 80%;
+      padding: 2px;
+    }
+  }
+}
+
+.small {
+  width: 70%;
+}
+
+.fileUploadWrapper {
+  width: 100%;
+}

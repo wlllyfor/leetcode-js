@@ -1,0 +1,10 @@
+@use "../../../../common/variable.scss" as *;
+
+.whiteBox__wrapper {
+  width: 600px;
+  text-align: center;
+  background-color: $white;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 3rem 4rem;
+}

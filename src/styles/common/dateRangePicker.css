@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.rdrCalendarWrapper {
+  @apply shadow rounded;
+}
+
+.rdrDay {
+  @apply h-[48px];
+}
+
+.rdrDayNumber {
+  top: 4px;
+  font-weight: 400;
+}
+
+.rdrDayToday .rdrDayNumber span:after {
+  bottom: 7px;
+}
+
+.rdrDateRangeWrapper .rdrDayEndOfMonth .rdrDayEndPreview,
+.rdrDateRangeWrapper .rdrDayEndOfWeek .rdrDayEndPreview,
+.rdrDateRangeWrapper .rdrDayEndPreview {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.rdrDateRangeWrapper .rdrDayStartOfMonth .rdrDayStartPreview,
+.rdrDateRangeWrapper .rdrDayStartOfWeek .rdrDayStartPreview,
+.rdrDateRangeWrapper .rdrDayStartPreview {
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+.rdrDateRangeWrapper .rdrDayEndOfMonth .rdrInRange,
+.rdrDateRangeWrapper .rdrDayEndOfMonth .rdrStartEdge,
+.rdrDateRangeWrapper .rdrDayEndOfWeek .rdrInRange,
+.rdrDateRangeWrapper .rdrDayEndOfWeek .rdrStartEdge {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  right: 2px;
+}
+
+.rdrDateRangeWrapper .rdrDayStartOfMonth .rdrInRange,
+.rdrDateRangeWrapper .rdrDayStartOfMonth .rdrEndEdge,
+.rdrDateRangeWrapper .rdrDayStartOfWeek .rdrInRange,
+.rdrDateRangeWrapper .rdrDayStartOfWeek .rdrEndEdge {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  left: 2px;
+}
+
+.rdrDateRangeWrapper .rdrDayHovered {
+  border-radius: 50%;
+}
+
+.rdrDateRangeWrapper .rdrEndEdge {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.rdrDateRangeWrapper .rdrStartEdge {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+/* DatePickerの全体的なスタイルを調整 */
+.rdrCalendarWrapper {
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+}
+
+/* 選択範囲のスタイルを調整 */
+.rdrSelected {
+  background-color: #2563EB;
+  color: #FFF;
+  border-radius: 50%;
+}
+
+/* 選択範囲の開始日と終了日のスタイルを調整 */
+.rdrDateRangeWrapper .rdrStartEdge,
+.rdrDateRangeWrapper .rdrEndEdge {
+  background-color: #2563EB;
+  color: #FFF;
+}
+
+/* 選択範囲の開始日と終了日の間のスタイルを調整 */
+.rdrDateRangeWrapper .rdrInRange {
+  background-color: #F3F4F6;
+  color: #1F2937;
+}
+
+.rdrDateRangeWrapper .rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span,
+.rdrDateRangeWrapper .rdrDay:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span {
+  color: #1F2937;
+}
+
+.rdrDateRangeWrapper .rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span,
+.rdrDateRangeWrapper .rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span {
+  color: #FFF;
+}
+
+.rdrDayStartPreview.rdrDayEndPreview {
+  border-radius: 50%;
+}
+
+.rdrCalendarWrapper:not(.rdrDateRangeWrapper) .rdrDayHovered .rdrDayNumber:after {
+  border-radius: 50%;
+}

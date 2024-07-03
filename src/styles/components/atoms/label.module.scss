@@ -1,0 +1,32 @@
+@use "@/styles/common/variable.scss" as *;
+
+.label {
+  display: block;
+  text-align: left;
+  font-size: 14px;
+}
+
+.half {
+  width: 50%;
+}
+
+.small {
+  width: 35%;
+}
+
+.large {
+  width: 65%;
+}
+
+.required {
+  color: $red;
+}
+
+.button {
+  width: fit-content;
+  font-size: 12px;
+  background-color: $gray_button;
+  padding: 2px;
+  border: 1px solid $gray;
+  cursor: pointer;
+}

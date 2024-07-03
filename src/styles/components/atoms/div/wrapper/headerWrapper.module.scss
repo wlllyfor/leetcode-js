@@ -1,0 +1,8 @@
+@use "../../../../common/variable.scss" as *;
+
+.header__wrapper {
+  background-color: $black;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}

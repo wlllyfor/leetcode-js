@@ -1,0 +1,16 @@
+@use "@/styles/common/variable.scss" as *;
+
+.inputContent__wrapper {
+  margin-top: 4px;
+  width: 66.6%;
+  input {
+    width: 47.5%;
+  }
+}
+
+.inputAndLabelContent__wrapper {
+  width: 100%;
+  input {
+    width: 95%;
+  }
+}

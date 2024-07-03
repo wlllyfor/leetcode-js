@@ -1,0 +1,11 @@
+@use "@/styles/common/variable.scss" as *;
+
+.bg {
+  position: relative;
+  background-color: $bg;
+  min-height: calc(100vh - 51px);
+}
+
+.main__bg {
+  display: flex;
+}

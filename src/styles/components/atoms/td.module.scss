@@ -1,0 +1,23 @@
+@use "@/styles/common/variable.scss" as *;
+
+.td {
+  width: 25%;
+  padding: 2px 4px;
+  border: 1px solid $black;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.large {
+  width: 50%;
+}

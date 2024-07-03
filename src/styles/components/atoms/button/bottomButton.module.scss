@@ -1,0 +1,46 @@
+@use "../../../common/variable.scss" as *;
+
+.button_wrapper {
+  text-align: center;
+  margin: 0 16px 0 0;
+}
+.button {
+  position: relative;
+  width: 250px;
+  padding: 16px 0;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.green {
+  background-color: $green;
+  color: $white;
+}
+.white {
+  border: 1px solid $black;
+}
+.dark {
+  background-color: $dark;
+  color: $white;
+}
+.red {
+  background-color: $red;
+  color: $white;
+}
+
+.blue {
+  background-color: $blue;
+  color: $white;
+}
+
+.lightBlue {
+  background-color: $light_blue;
+  color: $white;
+}
+
+.yellow {
+  background-color: $yellow;
+  color: $white;
+}

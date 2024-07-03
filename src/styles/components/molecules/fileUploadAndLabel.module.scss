@@ -1,0 +1,10 @@
+@use "@/styles/common/variable.scss" as *;
+
+.inputContent__wrapper {
+  margin-top: 24px;
+  text-align: left;
+
+  input {
+    display: none;
+  }
+}

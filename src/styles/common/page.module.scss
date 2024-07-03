@@ -1,0 +1,160 @@
+@use "variable.scss" as *;
+
+// login
+
+.login__wrapper {
+  position: relative;
+  background-color: $bg;
+  min-height: calc(100vh - 51px);
+  padding: 100px;
+}
+
+// main
+
+.main__wrapper {
+  position: relative;
+  display: flex;
+  background-color: $bg;
+  min-height: calc(100vh - 51px);
+  color: $black;
+}
+
+.flex__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  &.right {
+    justify-content: right;
+  }
+
+  &.aline_start {
+    align-items: flex-start;
+  }
+
+  &.aline_center {
+    align-items: center;
+  }
+
+  &.aline_end {
+    align-items: flex-end;
+  }
+
+  &.justify_right {
+    justify-content: right;
+  }
+
+  &.justify_between {
+    justify-content: space-between;
+  }
+
+  &.justify_around {
+    justify-content: space-around;
+  }
+
+  &.justify_end {
+    justify-content: end;
+  }
+
+  &.column {
+    flex-flow: column;
+  }
+
+  &.flex_nowrap {
+    flex-wrap: nowrap;
+  }
+}
+
+.place_start {
+  place-self: flex-start;
+}
+
+.content__wrapper {
+  width: 100%;
+  padding-bottom: 80px;
+}
+
+.inner {
+  margin: 20px 0 20px 20px;
+}
+
+.required {
+  color: $red;
+}
+
+// 余白管理用
+.mt_4 {
+  margin-top: 4px;
+}
+
+.mt_8 {
+  margin-top: 8px;
+}
+
+.mt_16 {
+  margin-top: 16px;
+}
+
+.mt_24 {
+  margin-top: 24px;
+}
+
+.mt_32 {
+  margin-top: 32px;
+}
+
+.pt_2em {
+  padding-top: 2em;
+}
+
+.ml_10 {
+  margin-left: 10px;
+}
+
+.ml_16 {
+  margin-left: 16px;
+}
+
+.ml_20 {
+  margin-left: 20px;
+}
+
+.ml_auto {
+  margin-left: auto;
+}
+
+.mr_8 {
+  margin-right: 8px;
+}
+
+.mr_10 {
+  margin-right: 10px;
+}
+
+.mr_16 {
+  margin-right: 16px;
+}
+
+.mr_20 {
+  margin-right: 20px;
+}
+
+.c_mr_16 > * {
+  margin-right: 16px;
+}
+
+.mb_16 {
+  margin-bottom: 16px;
+}
+
+.pb_16 {
+  padding-bottom: 16px;
+}
+
+.mb_auto {
+  margin-bottom: auto;
+}
+
+.bb_solid {
+  border-bottom: 1px solid $black;
+  padding: 12px 0;
+}

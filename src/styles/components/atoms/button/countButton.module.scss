@@ -1,0 +1,29 @@
+@use "../../../common/variable.scss" as *;
+
+.button {
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+  .plus {
+    width: 24px;
+    padding: 2px;
+    text-align: center;
+    background-color: $bg;
+    border: 1px solid $black;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    text-align: center;
+  }
+  .minus {
+    width: 24px;
+    padding: 2px;
+    text-align: center;
+    background-color: $bg;
+    border: 1px solid $black;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    text-align: center;
+  }
+}

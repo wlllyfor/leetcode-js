@@ -1,0 +1,13 @@
+@use "@/styles/common/variable.scss" as *;
+
+.error__wrapper {
+  background-color: $bg;
+  padding: 8px;
+  ul {
+    li {
+      color: $red;
+      font-size: 11px;
+      text-align: left;
+    }
+  }
+}

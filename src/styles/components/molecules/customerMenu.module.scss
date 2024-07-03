@@ -1,0 +1,19 @@
+@use "@/styles/common/variable.scss" as *;
+
+.menu {
+  background-color: $menu_c;
+  max-width: 200px;
+  width: 20%;
+  z-index: 2;
+  font-size: 13px;
+}
+
+.customer {
+  background-color: $menu_c;
+}
+
+.menu__icon {
+  color: #fff;
+  object-fit: contain;
+  margin: 0 10px 0 0;
+}

@@ -1,0 +1,26 @@
+@use "@/styles/common/variable.scss" as *;
+
+.inputContent__wrapper {
+  margin-top: 16px;
+  text-align: left;
+  input {
+    width: 45%;
+    padding-left: 50px;
+  }
+}
+
+.input__wrapper {
+  position: relative;
+}
+
+.input__head {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  text-align: center;
+  background-color: $gray;
+  color: $white;
+  padding-top: 6px;
+  height: calc(100% - 4px);
+  width: 45px;
+}

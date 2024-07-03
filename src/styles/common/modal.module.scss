@@ -1,0 +1,41 @@
+@use "variable.scss" as *;
+
+.modal {
+  width: 600px;
+  text-align: center;
+  background-color: #ffffff;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 3rem 4rem;
+  overflow-y: auto;
+  max-height: calc(90vh - 6rem);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #{$dark}aa;
+  padding: 100px;
+  z-index: 2;
+}
+
+.scroll_bar::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll_bar::-webkit-scrollbar-track {
+  background-color: #aaaaaa00;
+  border-radius: 5px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.scroll_bar::-webkit-scrollbar-thumb {
+  background-color: #aaaaaa;
+  border-right: 3px solid transparent;
+  background-clip: padding-box;
+}

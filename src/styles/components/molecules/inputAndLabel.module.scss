@@ -1,0 +1,41 @@
+@use "@/styles/common/variable.scss" as *;
+
+.inputContent__wrapper {
+  position: relative;
+  margin-top: 16px;
+}
+
+.title__wrapper {
+  position: absolute;
+  bottom: 0;
+  background-color: $gray;
+  color: $white;
+  padding: 6px;
+  border-radius: 4px 0 0 4px;
+}
+
+.small {
+  width: 30%;
+}
+
+.large {
+  width: 65%;
+}
+
+.half {
+  width: 50%;
+}
+
+.unShowLabel:last-child {
+  margin-right: calc(100% / 4);
+}
+
+.notTop:last-child {
+  margin-right: calc(100% / 3);
+}
+
+.hasTitle {
+  input {
+    padding-left: 40px;
+  }
+}

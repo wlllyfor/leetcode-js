@@ -1,0 +1,18 @@
+@use "../../../common/variable.scss" as *;
+
+.button {
+  position: relative;
+  width: 100px;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.button__icon {
+  width: 32px;
+  height: 32px;
+  margin-right: auto;
+  vertical-align: text-bottom;
+}

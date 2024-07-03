@@ -1,0 +1,13 @@
+@use "@/styles/common/variable.scss" as *;
+
+.inputContent__wrapper {
+  margin-top: 16px;
+  input {
+    width: 30%;
+    margin-right: 10px;
+  }
+}
+
+.small {
+  width: 70%;
+}

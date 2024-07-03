@@ -1,0 +1,12 @@
+@use "../../../common/variable.scss" as *;
+
+.close_button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}

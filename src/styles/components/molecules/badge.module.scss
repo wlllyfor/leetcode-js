@@ -1,0 +1,36 @@
+@use "@/styles/common/variable.scss" as *;
+
+.badge {
+  position: relative;
+  padding: 2px;
+  font-size: 13px;
+  border-radius: 5px;
+  text-align: center;
+}
+.green {
+  background-color: $green;
+  color: $white;
+}
+.blue {
+  background-color: $blue;
+  color: $white;
+}
+.white {
+  border: 1px solid $black;
+}
+.dark {
+  background-color: $dark;
+  color: $white;
+}
+.red {
+  background-color: $red;
+  color: $white;
+}
+.button__icon {
+  position: absolute;
+  top: 7px;
+  left: 14px;
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}

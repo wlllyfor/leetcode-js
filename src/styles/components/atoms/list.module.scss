@@ -1,0 +1,18 @@
+@use "@/styles/common/variable.scss" as *;
+
+.menu__list {
+  color: #fff;
+  a,
+  p {
+    display: block;
+    padding: 10px 0 10px 20px;
+    &:hover {
+      background-color: $blue;
+    }
+  }
+  &.menu__list__child {
+    a {
+      padding-left: 45px;
+    }
+  }
+}

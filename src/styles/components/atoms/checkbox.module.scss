@@ -1,0 +1,21 @@
+@use "@/styles/common/variable.scss" as *;
+
+.checkbox {
+  border: 1px solid $black;
+  width: 16px;
+  height: 16px;
+  &:checked {
+    position: relative;
+    background-color: $gray;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -1px;
+      width: 16px;
+      height: 16px;
+      background-image: url(../../../resource/img/icon_check.svg);
+      background-size: contain;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@use "../../../common/variable.scss" as *;
+
+.tab_button {
+  width: fit-content;
+  padding: 10px 16px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.active {
+  background-color: $white;
+  &:hover {
+    opacity: 1;
+  }
+}

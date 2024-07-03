@@ -1,0 +1,9 @@
+@use "@/styles/common/variable.scss" as *;
+
+.groupHeader__wrapper {
+  width: calc(100% - 40px);
+  margin: 16px 20px 8px 20px;
+  p {
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,14 @@
+@use "../../../../common/variable.scss" as *;
+
+.bottomArea__wrapper {
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: $white;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid $bg;
+}

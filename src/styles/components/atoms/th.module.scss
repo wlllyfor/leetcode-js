@@ -1,0 +1,12 @@
+@use "@/styles/common/variable.scss" as *;
+
+.th {
+  width: 25%;
+  background-color: $gray_th;
+  padding: 2px 4px;
+  border: 1px solid $black;
+}
+
+.large {
+  width: 50%;
+}

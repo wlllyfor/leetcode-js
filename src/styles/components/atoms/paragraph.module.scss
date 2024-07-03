@@ -1,0 +1,29 @@
+@use "@/styles/common/variable.scss" as *;
+
+.white {
+  color: $white;
+}
+.link {
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
+.small {
+  font-size: 14px;
+}
+.bold {
+  font-weight: bold;
+}
+.gray {
+  font-size: 12px;
+  color: $gray;
+}
+.large {
+  font-size: 20px;
+}

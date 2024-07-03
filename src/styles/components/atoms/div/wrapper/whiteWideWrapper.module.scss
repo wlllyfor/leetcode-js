@@ -1,0 +1,23 @@
+@use "../../../../common/variable.scss" as *;
+
+.whiteWide__wrapper {
+  position: relative;
+  width: calc(100% - 40px);
+  background-color: $white;
+  margin: 10px 20px 10px 20px;
+  padding: 16px 20px;
+}
+
+.red {
+  background-color: $bg_red;
+}
+
+.yellow {
+  background-color: $bg_yellow;
+}
+
+.detail {
+  background-color: #6b6da61d;
+  margin-top: 8px;
+  padding: 8px;
+}
